@@ -1,0 +1,26 @@
+{
+  "name": "watchparty",
+  "version": "1.0.0",
+  "description": "TODO",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PredatorFeesh/Watch-Party.git"
+  },
+  "keywords": [
+    "watchparty",
+    "movie"
+  ],
+  "author": "WatchParty Team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PredatorFeesh/Watch-Party/issues"
+  },
+  "homepage": "https://github.com/PredatorFeesh/Watch-Party#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
