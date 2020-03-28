@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MovieList from './components/movieList'
+import MovieList from './components/MovieList/MovieList'
 
 class App extends Component {
   state = {
