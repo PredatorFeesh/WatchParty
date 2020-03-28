@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './components/Header/Header';
+import MovieList from './components/MovieList/MovieList'
 
 class App extends Component {
   state = {
@@ -25,7 +26,10 @@ class App extends Component {
 
   render() {
     return (
-      <Header />
+      <>
+        <Header />
+        <MovieList />
+      </>
     );
   }
 }
