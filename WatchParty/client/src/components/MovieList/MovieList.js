@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import theMovieDb from 'themoviedb-javascript-library'
 
-import './movieList.css'
+import './MovieList.css'
 
 theMovieDb.common.api_key = 'bd5800f4f98c685b042cd33a1a790365'
 

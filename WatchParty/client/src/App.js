@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import SiteHeader from './HeaderComponents/SiteHeader';
-import MovieList from './components/movieList'
+import Header from './components/Header/Header';
+import MovieList from './components/MovieList/MovieList'
 
 class App extends Component {
   state = {
@@ -26,10 +26,10 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <SiteHeader></SiteHeader>    
+      <>
+        <Header />
         <MovieList />
-      </div>
+      </>
     );
   }
 }
