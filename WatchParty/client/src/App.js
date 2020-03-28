@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SiteHeader from './HeaderComponents/SiteHeader';
+import Header from './components/Header/Header';
 
 class App extends Component {
   state = {
@@ -25,9 +25,7 @@ class App extends Component {
 
   render() {
     return (
-      
-      <SiteHeader></SiteHeader>    
-      
+      <Header />
     );
   }
 }
