@@ -5,15 +5,15 @@ class HeaderNavBar extends Component{
     render(){
 
         return(
-            <div id="site-navigation-bar" style={{flex: 'auto', fontSize: '20px', paddingRight: '16px', color:'white', fontFamily: 'Arial Narrow, sans-serif'}}>
-                    <nav>
-                        <a style={{paddingRight: '16px'}}>
+            <div id="site-navigation-bar">
+                    <nav class="nav-elements">
+                        <a>
                             Activity Feed
                         </a>
-                        <a style={{paddingRight: '16px'}}>
+                        <a>
                             Matches
                         </a>
-                        <a style={{paddingRight: '16px'}}>
+                        <a>
                             Profile
                         </a>
                     </nav>
