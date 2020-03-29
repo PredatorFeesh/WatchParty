@@ -1,0 +1,12 @@
+#movie-list {
+}
+.movie-list-row {
+  margin-top: 10px;
+}
+.movie-image {
+  max-width: 100px;
+}
+.movie-title {
+  height: 100px;
+  line-height: 100px;
+}

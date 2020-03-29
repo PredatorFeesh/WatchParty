@@ -4,7 +4,7 @@ import HeaderSBox from './HeaderSBox'
 import HeaderNavBar from './HeaderNavBar'
 import HeaderProfileLogo from './HeaderProfileLogo'
 
-class SiteHeader extends Component {
+class Header extends Component {
 
     render() {
         
@@ -22,4 +22,4 @@ class SiteHeader extends Component {
 
 }
 
-export default SiteHeader;
+export default Header;
