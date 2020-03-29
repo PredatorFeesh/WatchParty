@@ -4,7 +4,7 @@
   "description": "TODO",
   "main": "backend/server.js",
   "scripts": {
-    "start": "node backend/server.js",
+    "start": "node src/server.js",
     "test": "jest"
   },
   "repository": {
@@ -13,7 +13,8 @@
   },
   "keywords": [
     "watchparty",
-    "movie"
+    "movie",
+    "backend"
   ],
   "author": "WatchParty Team",
   "license": "ISC",
