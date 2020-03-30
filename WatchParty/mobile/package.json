@@ -18,5 +18,18 @@
     "babel-preset-expo": "~8.0.0",
     "@babel/core": "^7.0.0"
   },
+  "jest": {
+    "verbose": true,
+    "clearMocks": false,
+    "transform": {
+      "^.+\\.js?$": "babel-jest"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json"
+    ],
+    "preset": "react-native"
+  },
   "private": true
 }

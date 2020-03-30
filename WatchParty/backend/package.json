@@ -23,10 +23,6 @@
   },
   "homepage": "https://github.com/PredatorFeesh/Watch-Party#readme",
   "dependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/preset-env": "^7.9.0",
-    "@babel/preset-react": "^7.9.4",
-    "babel-jest": "^25.2.3",
     "express": "^4.17.1"
   },
   "jest": {
@@ -43,7 +39,6 @@
     "preset": "react-native"
   },
   "devDependencies": {
-    "jest": "^25.2.3",
-    "react-test-renderer": "^16.13.1"
+    "jest": "^25.2.3"
   }
 }
