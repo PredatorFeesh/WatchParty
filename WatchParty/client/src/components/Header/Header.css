@@ -1,0 +1,69 @@
+#site-header {
+    background-color: #606060;
+    width: 100%;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+#site-logo{
+    padding-right: 8px;
+    margin-top: 2px;
+    margin-left: 10px;
+}
+
+#site-navigation-bar {
+    flex: auto;
+    font-size: 25px;
+    color: white;
+    font-family: Arial Narrow, sans-serif;
+}
+
+.nav-elements a{
+    padding-right: 16px;
+}
+
+#movie-search-bar-wrapper {
+    padding-right: 18px;
+}
+
+#movie-search-box{
+    width: 250px;
+    height: 28px;
+    font-size: 16px;
+    border: 0px;
+    border-radius: 5px;
+    font-family: sans-serif;
+    background: #a8a8a8;
+}
+
+#profile-pic-dropdown-container{
+    padding-right: 40px;
+}
+
+.dropdown-area {
+    background-color: #606060;
+    padding-top: 0px;
+    border: none;
+  }
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #a8a8a8;
+    min-width: 100px;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 5px 15px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+.dropdown:hover .dropdown-content {display: block;}
+  
+

@@ -6,7 +6,7 @@ class HeaderLogo extends Component {
         
         return (
           
-            <div id="site-logo" style={{paddingRight: '10px', marginTop: '2px', marginLeft: '10px'}}>
+            <div id="site-logo">
                 <img src={'WatchPartyLogo.png'}/>
             </div>       
           

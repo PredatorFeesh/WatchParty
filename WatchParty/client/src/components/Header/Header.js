@@ -3,6 +3,7 @@ import HeaderLogo from './HeaderLogo'
 import HeaderSBox from './HeaderSBox'
 import HeaderNavBar from './HeaderNavBar'
 import HeaderProfileLogo from './HeaderProfileLogo'
+import './Header.css'
 
 class Header extends Component {
 
@@ -10,7 +11,7 @@ class Header extends Component {
         
         return (
           
-          <header id="site-header" role="banner" style={{backgroundColor : '#606060',width : '100%',height : '80px',display: 'flex',alignItems: 'center',flexWrap: 'nowrap' }}>
+          <header id="site-header" role="banner" >
               <HeaderLogo></HeaderLogo>
               <HeaderSBox></HeaderSBox>
               <HeaderNavBar></HeaderNavBar>
