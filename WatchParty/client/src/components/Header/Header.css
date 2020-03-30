@@ -20,7 +20,7 @@
     font-family: Arial Narrow, sans-serif;
 }
 
-.nav-elements a{
+.nav-elements span {
     padding-right: 16px;
 }
 
@@ -56,14 +56,14 @@
     z-index: 1;
 }
 
-.dropdown-content a {
+.dropdown-content span {
     color: black;
     padding: 5px 15px;
     text-decoration: none;
     display: block;
 }
 
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-content span:hover {background-color: #ddd;}
 .dropdown:hover .dropdown-content {display: block;}
   
 
