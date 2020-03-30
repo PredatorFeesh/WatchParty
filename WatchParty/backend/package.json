@@ -35,8 +35,7 @@
       "js",
       "jsx",
       "json"
-    ],
-    "preset": "react-native"
+    ]
   },
   "devDependencies": {
     "jest": "^25.2.3"
