@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Router, Route, Switch } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Header from './components/Header/Header';
 import MovieList from './components/MovieList/MovieList'
