@@ -24,5 +24,20 @@
   "homepage": "https://github.com/PredatorFeesh/Watch-Party#readme",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "jest": {
+    "verbose": true,
+    "clearMocks": false,
+    "transform": {
+      "^.+\\.js?$": "babel-jest"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json"
+    ]
+  },
+  "devDependencies": {
+    "jest": "^25.2.3"
   }
 }

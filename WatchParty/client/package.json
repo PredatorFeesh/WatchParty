@@ -14,8 +14,12 @@
     "react": "^16.13.0",
     "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.0",
+    "react-scripts": "3.4.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-react": "^7.9.4",
     "themoviedb-javascript-library": "^3.0.3"
   },
   "scripts": {
@@ -27,6 +31,18 @@
   "proxy": "http://localhost:5000",
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "jest": {
+    "verbose": true,
+    "clearMocks": false,
+    "transform": {
+      "^.+\\.js?$": "babel-jest"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json"
+    ]
   },
   "browserslist": {
     "production": [
