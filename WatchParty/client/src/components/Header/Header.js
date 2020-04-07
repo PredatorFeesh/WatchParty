@@ -17,7 +17,6 @@ class Header extends React.Component {
       searchText: ''
     };
 
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
     this.handleSearchKeyUp = this.handleSearchKeyUp.bind(this);
@@ -47,10 +46,6 @@ class Header extends React.Component {
 
   }
 
-  handleFormSubmit(event){
-    event.preventDefault();
-  }
-
   handleSearchKeyUp(event){
     event.preventDefault();
     if (event.key === 'Enter' && event.keyCode === 13) {
@@ -66,8 +61,8 @@ class Header extends React.Component {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Form inline onSubmit={this.handleFormSubmit}>
-              <FormControl onChange={this.handleTextChange} value={this.state.searchText} onKeyUp={this.handleSearchKeyUp} type="text" placeholder="Search movies or users" className="mr-sm-2" />
+            <Form inline onSubmit={(event) => {event.preventDefault()}}>
+              <FormControl onChange={(this.handleTextChange)} value={this.state.searchText} onKeyUp={this.handleSearchKeyUp} type="text" placeholder="Search movies or users" className="mr-sm-2" />
               <Button onClick={this.handleSearchSubmit} variant="outline-info">Search</Button>
             </Form>
           </Nav>
