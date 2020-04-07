@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
-import { Router, Route, Switch } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 
 import Header from './components/Header/Header';
-import MovieList from './components/MovieList/MovieList'
-import Profile from "./components/Profile";
-import PrivateRoute from "./components/PrivateRoute";
-import history from "./utils/history";
 
 library.add(
   faUserCircle
@@ -39,14 +34,7 @@ class App extends Component {
   render() {
     return (
       <>
-        <Router history={history}>
-          <Header />
-          <MovieList />
-          <Switch>
-            <Route exact path="/" />
-            <PrivateRoute exact path="/profile" component={Profile} /> 
-          </Switch>
-        </Router>
+        <Header />
       </>
     );
   }
