@@ -23,7 +23,8 @@
   },
   "homepage": "https://github.com/PredatorFeesh/Watch-Party#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "pg": "^8.0.0"
   },
   "jest": {
     "verbose": true,
