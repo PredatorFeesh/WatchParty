@@ -33,16 +33,10 @@
     "extends": "react-app"
   },
   "jest": {
-    "verbose": true,
     "clearMocks": false,
     "transform": {
       "^.+\\.js?$": "babel-jest"
-    },
-    "moduleFileExtensions": [
-      "js",
-      "jsx",
-      "json"
-    ]
+    }
   },
   "browserslist": {
     "production": [
