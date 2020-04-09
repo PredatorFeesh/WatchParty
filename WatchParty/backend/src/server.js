@@ -5,6 +5,7 @@ const port = process.env.PORT || 5000;
 const {Client}=require('pg');
 const {Sequelize} = require('sequelize');
 var config = require('./configuration/config/config.js');
+console.log(config.test.username);
 // console.log that your server is up and running
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
@@ -13,9 +14,9 @@ app.get('/express_backend', (req, res) => {
     res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
 });
 
-const sequelize = new Sequelize(process.env.DB_DATABASE,process.env.DB_USER,process.env.DB_PASSWORD,{
-  host: process.env.DB_HOST,
-  port:process.env.DB_PORT,
+const sequelize = new Sequelize(config.test.database,config.test.username,config.test.password,{
+  host: config.test.host,
+  port: config.test.port,
   dialect: 'postgres'
 });
 
