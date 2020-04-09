@@ -5,7 +5,6 @@ const port = process.env.PORT || 5000;
 const {Client}=require('pg');
 const {Sequelize} = require('sequelize');
 var config = require('./configuration/config/config.js');
-console.log(config.test.username);
 // console.log that your server is up and running
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
