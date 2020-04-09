@@ -1,49 +1,26 @@
 import React from 'react';
-import { 
-  StyleSheet, 
-  Text, 
-  TextInput,
-  View,
-  TouchableOpacity,
- StatusBar } from 'react-native';
+import { StyleSheet, Text, TextInput, View, TouchableOpacity,StatusBar } from 'react-native';
+import {NativeRouter, Switch, Route} from "react-router-native";
+
+/*import all pages below*/
+
+import Signin from './Signin';
+import Overview from './Overview';
+import Watched from './Watched';
+import Signup from './Signup';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <StatusBar
-      backgroundColor="6495ED"
-      barStyle="light-content"
-      />
-
-      <Text>
-        Watch Party</Text>
-
-      <TextInput
-        style = {styles.input}
-        placeholder = "Email"
-        />
-
-      <TextInput
-        style = {styles.input}
-        placeholder = "Password"
-        secureTextEntry
-        />
-
-        <View style={styles.btnContainer}>
-          <TouchableOpacity
-          style={styles.userBtn}>
-          {/*onPress={() => alert("Login Works")}*/}
-          <Text style = {styles.btnTxt}>Login</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-          style={styles.userBtn}> 
-          {/*onPress={() => alert("Signup Works")*/}
-            <Text style = {styles.btnTxt}>Sign Up</Text>
-          </TouchableOpacity>
-        </View>
-
-    </View>
+    <NativeRouter>
+      <View style = {styles.container}>
+        <Switch>
+          <Route exact path = "/" component = {Signin} />
+          <Route exact path = "/signup" component = {Signup} />
+          <Route exact path = "/overview" component = {Overview} />
+          <Route exact path = "/watched" component = {Watched} />
+        </Switch>
+      </View>
+    </NativeRouter>
   );
 }
 
@@ -53,32 +30,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#6495ED',
     alignItems: 'center',
     justifyContent: 'center',
-    color: "white",
-    fontFamily: "Lobster-Regular"
-  },
-
-  input:{
-    width: "90%",
-    backgroundColor: "#fff",
-    padding: 15,
-    marginBottom: 10
-  }, 
-
-  btnContainer:{
-    flexDirection: "row",
-    justifyContent: "space-between",
-    width: "90%"
-  },
-
-  userBtn: {
-    backgroundColor: "#FFD700",
-    padding: 15, 
-    width: "45%"
-  },
-
-  btnTxt: {
-    fontSize: 16,
-    textAlign: "center"
   }
-
-});
+})
