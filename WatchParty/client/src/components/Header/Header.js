@@ -1,10 +1,8 @@
 import React from 'react';
-import { Route, Switch, withRouter} from "react-router-dom"
+import { withRouter } from "react-router-dom"
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { Form, FormControl, Button } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
-import SearchResults from "./SearchResults"
 
 import './Header.css'
 
@@ -78,9 +76,6 @@ class Header extends React.Component {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-      <Switch>
-        <Route exact path="/results" component={SearchResults} />
-      </Switch>
       </>
     );
   }
