@@ -1,5 +1,10 @@
 import React, {Component} from "react"
+
+import theMovieDb from 'themoviedb-javascript-library'
+
 import './SearchResults.css'
+
+theMovieDb.common.api_key = 'bd5800f4f98c685b042cd33a1a790365'
 
 class SearchResults extends Component{
 
@@ -21,15 +26,18 @@ class SearchResults extends Component{
     }
 
     fetchMovies() {
-        fetch(`https://api.themoviedb.org/3/search/movie?api_key=bd5800f4f98c685b042cd33a1a790365&query=${this.props.location.state.searchText}`)
-            .then(response => response.json())
-            .then(data =>
-                this.setState({
-                    movieItems: data.results,
-                    isLoading : false 
-                })
-            )
-            .catch(error => this.setState({error, isLoading: false})) 
+        console.log(this.props.location.state.searchText)
+        theMovieDb.search.getMovie(
+          {"query": this.props.location.state.searchText},
+          data => {
+            var response = JSON.parse(data);
+            this.setState({
+            movieItems: response.results,
+            isLoading : false 
+          })
+        },
+          err => this.setState({movieItems: [], error: err, isLoading: false})
+        )
     }
 
     componentDidMount(){
@@ -57,7 +65,10 @@ class SearchResults extends Component{
                 {this.state.error ? <p>{this.state.error.message}</p> : null}
                 {!this.state.isLoading ? (
                   <div >
-                    {this.state.movieItems.map(el => (
+                    {this.state.movieItems.sort((a,b) => {
+                      return b.popularity - a.popularity
+                    })
+                    .map(el => (
                     <div className="movie-item-container" key={el.id}>
                       <div className="img-container">
                         <img onError={this.defaultPoster} src={`https://image.tmdb.org/t/p/w1280${el.poster_path}`} width="110px" height="190px" alt="movie poster"/>
