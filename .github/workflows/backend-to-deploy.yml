@@ -17,7 +17,7 @@ jobs:
         git config --global user.email "watchpartyappmain@gmail.com"
         git config --global user.name "watchpartyappmain"
         git filter-branch --prune-empty --subdirectory-filter WatchParty/backend master
-        git merge -s ours master --allow-unrelated-histories
+        git merge -X theirs master --allow-unrelated-histories 
         git fetch --unshallow origin
     - name: Push Backend to Deploy Repo
       env:
