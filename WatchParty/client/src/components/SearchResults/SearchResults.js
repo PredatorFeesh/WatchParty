@@ -59,7 +59,7 @@ class SearchResults extends Component{
             {this.state.movieItems !== undefined && this.state.movieItems.length !== 0 ? (
             <>
             <div className="search-result-text">
-              <h1>Search Results for: {this.props.location.state.searchText}</h1>
+              <h1>Search Results for: "{this.props.location.state.searchText}" </h1>
             </div>
               <div className="search-tiles-container">
                 {this.state.error ? <p>{this.state.error.message}</p> : null}
