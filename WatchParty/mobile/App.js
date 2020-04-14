@@ -4,10 +4,10 @@ import {NativeRouter, Switch, Route} from "react-router-native";
 
 /*import all pages below*/
 
-import Signin from './Signin';
-import Overview from './Overview';
-import Watched from './Watched';
-import Signup from './Signup';
+import Signin from './src/Signin';
+import Overview from './src/Overview';
+import Watched from './src/Watched';
+import Signup from './src/Signup';
 
 export default function App() {
   return (
