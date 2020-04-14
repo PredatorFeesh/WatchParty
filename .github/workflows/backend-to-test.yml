@@ -1,0 +1,29 @@
+name: Push Backend to Test Repo
+on:
+  push:
+    branches: [ sandbox ]
+jobs:
+  repo-sync:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+    - name: Set up remotes to Backend Test Repo
+      run: |
+        git remote add testing https://github.com/watchpartyappmain/watchparty-server-test.git
+        git fetch --all
+        git checkout -b sandbox-sync testing/master
+        git config --global user.email "watchpartyappmain@gmail.com"
+        git config --global user.name "watchpartyappmain"
+        git filter-branch --prune-empty --subdirectory-filter WatchParty/backend sandbox
+        git merge -X theirs sandbox --allow-unrelated-histories
+        git fetch --unshallow origin
+    - name: Push Backend to Test Repo
+      env:
+        INPUT_GITHUB_TOKEN: ${{ secrets.personal_github_token }}
+        REPOSITORY: 'watchpartyappmain/watchparty-server-test'
+        INPUT_BRANCH: 'master'
+      run: |
+        remote_repo="https://watchpartymainapp:${INPUT_GITHUB_TOKEN}@github.com/${REPOSITORY}.git"
+        git push "${remote_repo}" HEAD:${INPUT_BRANCH} --follow-tags --force;
