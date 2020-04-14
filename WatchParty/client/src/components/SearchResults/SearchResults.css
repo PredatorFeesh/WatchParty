@@ -1,0 +1,53 @@
+.search-result-text{
+    margin: auto;
+    width: max-content;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.search-tiles-container{
+    width: 75%;
+    margin: auto;
+}
+
+.movie-item-container{
+    overflow: hidden;
+    background-color: #a3a3a3;
+    border: 3px solid black;
+    width: 100%;
+    height: 250px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    border-radius: 25px; 
+}
+
+.img-container{
+    width: min-content;
+    border: 1px solid black; 
+}
+
+.img-container{
+    margin-left: 10px;
+    margin-right: 15px;
+}
+
+.title-desc-container{
+    margin-right: 10px;
+    max-height: 245px;
+}
+
+.movie-title{
+    font-size: 35px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.movie-desc{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
