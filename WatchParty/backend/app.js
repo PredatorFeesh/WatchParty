@@ -6,6 +6,8 @@ const logger = require('morgan')
 
 const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
+const models = require('./models')
+models.sequelize.sync()
 
 const app = express()
 
