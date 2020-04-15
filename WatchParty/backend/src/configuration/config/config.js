@@ -1,4 +1,3 @@
-const fs = require('fs');
 require('dotenv').config(); 
 module.exports = {
   development: {
@@ -16,7 +15,7 @@ module.exports = {
     database: process.env.DB_TEST_DATABASE,
     host: process.env.DB_TEST_HOST,
 	port: process.env.DB_TEST_PORT,
-    dialect: "postsgres",
+    dialect: "postgres",
     operatorsAliases: false,
   },
  production: {
