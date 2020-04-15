@@ -1,12 +1,12 @@
 require('dotenv').config();
-const database = require('./database.js');
+const database = require('./routes/database.js');
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 5000;
 const {Client}=require('pg');
 const {Sequelize} = require('sequelize');
-var models = require('./configuration/models');
-var config = require('./configuration/config/config.js');
+var models = require('./models');
+var config = require('./config/config.js');
 // console.log that your server is up and running
 app.listen(port, () => console.log(`Listening on port ${port}`));
 

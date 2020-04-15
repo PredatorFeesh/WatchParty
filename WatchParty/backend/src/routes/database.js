@@ -1,7 +1,7 @@
 require('dotenv').config();
 const {Sequelize} = require('sequelize');
-var models = require('./configuration/models');
-var config = require('./configuration/config/config.js');
+var models = require('../models');
+var config = require('../config/config.js');
 
 module.exports = {
 
