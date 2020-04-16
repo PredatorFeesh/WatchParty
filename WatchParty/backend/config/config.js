@@ -7,9 +7,13 @@ module.exports = {
     demo_user_password: 'pass1234',
   },
   test: {
-    dialect: 'sqlite',
-    storage: ':memory:',
-    session_secret: 'keyboard cat',
+    username: process.env.TEST_DB_USERNAME,
+    password: process.env.TEST_DB_PASSWORD,
+    database: process.env.TEST_DB_NAME,
+    host: process.env.TEST_DB_HOSTNAME,
+    dialect: 'postgres',
+    use_env_variable: 'DATABASE_URL',
+    session_secret: process.env.TEST_SESSION_SECRET,
     salt_rounds: 10,
   },
   production: {
