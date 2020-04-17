@@ -11,7 +11,7 @@ jobs:
         persist-credentials: false
         ref: sandbox
 
-    - name: Set up remotes to Backend Test Repo
+    - name: Set up remotes to Client Test Repo
       env:
         BLUE: '\033[34'
         NORM: '\033[0m'
@@ -29,14 +29,14 @@ jobs:
       env:
         INPUT_GITHUB_TOKEN: ${{ secrets.personal_github_token }}
         REPOSITORY: 'watchpartyappmain/watchparty-frontend-test'
-        INPUT_BRANCH: 'deploy-heroku'
+        INPUT_BRANCH: 'heroku-deploy'
       run: |
         remote_repo="https://watchpartymainapp:${INPUT_GITHUB_TOKEN}@github.com/${REPOSITORY}.git"
         git push "${remote_repo}" --delete ${INPUT_BRANCH} --force;
 
     - name: Checkout new branch
       run: |
-        git checkout -b deploy-heroku sandbox
+        git checkout -b heroku-deploy sandbox
 
     - name: Push to Client Test Repo
       env:

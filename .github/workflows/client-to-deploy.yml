@@ -29,14 +29,14 @@ jobs:
       env:
         INPUT_GITHUB_TOKEN: ${{ secrets.personal_github_token }}
         REPOSITORY: 'watchpartyappmain/watchparty-frontend-deploy'
-        INPUT_BRANCH: 'deploy-heroku'
+        INPUT_BRANCH: 'heroku-deploy'
       run: |
         remote_repo="https://watchpartymainapp:${INPUT_GITHUB_TOKEN}@github.com/${REPOSITORY}.git"
         git push "${remote_repo}" --delete ${INPUT_BRANCH} --force;
 
     - name: Checkout new branch
       run: |
-        git checkout -b deploy-heroku master
+        git checkout -b heroku-deploy master
 
     - name: Push to Client Deploy Repo
       env:
