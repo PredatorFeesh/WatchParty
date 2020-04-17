@@ -2,7 +2,7 @@
 
 ## What we do
 
-TODO
+We provide the user with a way to keep track of movie they have watched and want to watch. We also provide the user with the ability to invite friends to watch movies together.
 
 ## DEV: How to run
 
@@ -43,7 +43,7 @@ To start the backend, you will need to navigate to the main folder and run \
 In order to run the client, you will need to navigate to the client and run \
 `cd WatchParty/client && npm run start`
 
-### Mobile
+### Mobile ( Support to be moved to frontend webapp )
 
 In order to run the mobile application, go into the mobile/WatchPart. \
 `cd WatchParty/mobile && sudo npm start` \
