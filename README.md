@@ -43,7 +43,7 @@ To start the backend, you will need to navigate to the main folder and run \
 In order to run the client, you will need to navigate to the client and run \
 `cd WatchParty/client && npm run start`
 
-### Mobile
+### Mobile ( Support to be moved to frontend webapp )
 
 In order to run the mobile application, go into the mobile/WatchPart. \
 `cd WatchParty/mobile && sudo npm start` \
