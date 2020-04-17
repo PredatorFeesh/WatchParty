@@ -12,15 +12,18 @@ jobs:
         ref: master
 
     - name: Set up remotes to Backend Deploy Repo
+      env:
+        BLUE: '\033[34'
+        NORM: '\033[0m'
       run: |
         git config --global user.email "watchpartyappmain@gmail.com"
         git config --global user.name "watchpartyappmain"
-        echo Config Succeeded
+        echo -e "${BLUE}Config Succeeded${NORM}"
         git remote add testing https://github.com/watchpartyappmain/watchparty-server-deploy.git
-        echo Remote Added Successfully
+        echo -e "${BLUE}Remote Added Successfully${NORM}"
         git fetch --all
         git filter-branch --prune-empty --subdirectory-filter WatchParty/backend master
-        echo Fetched and prunned server
+        echo -e "${BLUE}Fetched and prunned server${NORM}"
 
     - name: Delete heroku-depoy on remote repo
       env:
@@ -34,7 +37,6 @@ jobs:
     - name: Checkout new branch
       run: |
         git checkout -b deploy-heroku master
-        echo Checkedout new deploy-heroku branch
 
     - name: Push to Server Deploy Repo
       env:
