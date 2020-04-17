@@ -2,7 +2,7 @@
 
 ## What we do
 
-TODO
+We provide the user with a way to keep track of movie they have watched and want to watch. We also provide the user with the ability to invite friends to watch movies together.
 
 ## DEV: How to run
 
