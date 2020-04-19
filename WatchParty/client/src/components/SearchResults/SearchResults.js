@@ -1,4 +1,5 @@
 import React, {Component} from "react"
+import {Link} from "react-router-dom"
 
 import theMovieDb from 'themoviedb-javascript-library'
 
@@ -39,6 +40,7 @@ class SearchResults extends Component{
         },
           err => this.setState({movieItems: [], error: err, isLoading: false})
         )
+        console.log(this.state.movieItems)
     }
 
     componentDidMount(){
@@ -75,12 +77,14 @@ class SearchResults extends Component{
                         <img onError={this.defaultPoster} src={`https://image.tmdb.org/t/p/w1280${el.poster_path}`} width="110px" height="190px" alt="movie poster"/>
                       </div>
                       <div className="title-desc-container">
-                        <div className="movie-title">
-                          {el.release_date !== undefined && el.release_date !== "" ? (<div> {el.title} ({el.release_date.substring(0,4)})</div> ) : (<div> {el.title} </div> )}
-                        </div>
-                          <div className="movie-desc">
-                            <div> {el.overview} </div>
+                        <Link to={`/results/${el.id}`}>
+                          <div className="movie-title">
+                            {el.release_date !== undefined && el.release_date !== "" ? (<div> {el.title} ({el.release_date.substring(0,4)})</div> ) : (<div> {el.title} </div> )}
                           </div>
+                        </Link>
+                        <div className="movie-desc">
+                          <div> {el.overview} </div>
+                        </div>
                       </div>                                         
                     </div>
                     ))}
@@ -91,7 +95,7 @@ class SearchResults extends Component{
               </div>
             </>) :
             (
-            <h3>No data retrieved. Try another search.</h3>
+            <h3>No movie data retrieved. Try another search.</h3>
             )
             }
             </>
