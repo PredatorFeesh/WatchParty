@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-bootstrap'
 
 import theMovieDb from 'themoviedb-javascript-library'
 
@@ -17,11 +18,14 @@ class MoviePage extends React.Component{
         }
 
         this.fetchMovieData = this.fetchMovieData.bind(this);
+        this.defaultPoster = this.defaultPoster.bind(this);
+    }
+
+    defaultPoster(event){
+        event.target.src = "/default.png"
     }
 
     fetchMovieData(){
-        console.log(this.props.match.params.movieId)
-
         theMovieDb.movies.getById(
             {"id": this.props.match.params.movieId }, 
             data => {
@@ -39,10 +43,29 @@ class MoviePage extends React.Component{
     render () {
         console.log(this.state.movieItem)
         return (
-            <div>
-              <h1> {this.state.movieItem.title} </h1>
-              <img src={`https://image.tmdb.org/t/p/w1280${this.state.movieItem.poster_path}`} width="260px" height="300px"></img>
-              <a href={`https://www.imdb.com/title/${this.state.movieItem.imdb_id}`}> Link </a>
+            <div className="info-container">
+              <div className="poster-container">
+                <img onError={this.defaultPoster} src={`https://image.tmdb.org/t/p/w1280${this.state.movieItem.poster_path}`} width="260px" height="380px" alt="movie poster"></img>
+              </div>
+              <div className="movie-details-container">
+                <div className="title-section"> 
+                  {this.state.movieItem.release_date !== undefined && this.state.movieItem.release_date !== "" ? (<div> {this.state.movieItem.title} ({this.state.movieItem.release_date.substring(0,4)})</div> ) : (<div> {this.state.movieItem.title} </div> )}
+                </div>
+                <div className="overview">
+                  Overview :
+                </div>
+                <div className="description">
+                  {this.state.movieItem.overview}
+                </div>
+                <div className="btn-container">
+                  <Button className="read-more-btn" variant="secondary" target="_blank" href={`https://www.imdb.com/title/${this.state.movieItem.imdb_id}`}>
+                    Read More
+                  </Button>
+                  <Button className="to-watch-btn" variant="success">
+                    Mark as to Watch
+                  </Button>
+                </div>
+              </div>
             </div>
         );
     }

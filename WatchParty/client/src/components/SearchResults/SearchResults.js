@@ -24,7 +24,7 @@ class SearchResults extends Component{
     }
 
     defaultPoster(event){
-        event.target.src = "default.png"
+        event.target.src = "/default.png"
     }
 
     fetchMovies() {
