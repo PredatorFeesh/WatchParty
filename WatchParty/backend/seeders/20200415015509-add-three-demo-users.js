@@ -6,7 +6,7 @@ const config = require('../config/config.js')[env]
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     const demoUserPassword = await bcrypt.hash(config.demo_user_password, config.salt_rounds)
-    return queryInterface.bulkInsert('Users', [
+    return queryInterface.bulkInsert('user', [
       {
         firstName: 'Tim',
         lastName: 'Null',
@@ -35,6 +35,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('Users', null, {})
+    return queryInterface.bulkDelete('user', null, {})
   }
 }
