@@ -1,4 +1,3 @@
-require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const { UniqueConstraintError, ValidationError } = require('sequelize')
@@ -10,121 +9,15 @@ const models = require('./models')
 
 // GET /api/userDetails
 router.get('/userDetails/:userID', function(req, res, next) {
-  models['users']
+  models['User']
     .findOne({
       attributes: ['firstName', 'lastName'],
       where: { id: req.params.userID }
     })
-    .then(user => {
-		if (user==null){
-			res.send(`Unable to get user ${req.params.userID}`)
-		}
-		else{
-			res.json(user)}
-		})
+    .then(user => res.json(user))
     .catch(err => {
       console.log(err)
-      return res.status(500).send(`Unable to get user ${req.params.userID}`)
-    })
-});
-
-// GET /api/userSearch
-router.get('/userSearch/:email', function(req, res, next) {
-  models['users']
-    .findOne({
-      attributes: ['firstName', 'lastName'],
-      where: { email: req.params.email }
-    })
-    .then(user => {
-		if (user==null){
-			res.send(`Unable to get user with email: ${req.params.email}`)
-		}
-		else{
-			res.json(user)}
-		})
-    .catch(err => {
-      console.log(err)
-      return res.status(500).send(`Unable to get user with email: ${req.params.email}`)
-    })
-});
-
-// GET /api/toWatch
-router.get('/toWatch/:userID', function(req, res, next) {
-  models['movieitem']
-    .findAll({
-      attributes: ['movieid'],
-      where: { userid:req.params.userID, beenwatched:'0'}
-    })
-    .then(movieitem => {
-		if (movieitem.length==0){
-			res.send(`Unable to get user's movies to watch with id: ${req.params.userID}`)
-		}
-		else{
-			res.json(movieitem)}
-		})
-    .catch(err => {
-      console.log(err)
-      return res.status(500).send(`Unable to get user's movies to watch with id: ${req.params.userID}`)
-    })
-});
-
-// GET /api/watched
-router.get('/watched/:userID', function(req, res, next) {
-  models['movieitem']
-    .findAll({
-      attributes: ['movieid'],
-      where: { userid:req.params.userID, beenwatched:'1'}
-    })
-    .then(movieitem => {
-		if (movieitem.length==0){
-			res.send(`Unable to get user's movies watched with id: ${req.params.userID}`)
-		}
-		else{
-			res.json(movieitem)}
-		})
-    .catch(err => {
-      console.log(err)
-      return res.status(500).send(`Unable to get user's movies watched with id: ${req.params.userID}`)
-    })
-});
-
-// GET /api/following
-router.get('/following/:userID', function(req, res, next) {
-  models['friendlist']
-    .findAll({
-      attributes: ['requestee'],
-      where: { requester: req.params.userID, accepted:"1" }
-    })
-    .then(friendlist =>  {
-		if (friendlist.length==0){
-			res.send(`Unable to get following with id: ${req.params.userID}`)
-		}
-		else{
-			res.json(friendlist)}
-		})
-    .catch(err => {
-      console.log(err)
-      return res.status(500).send(`Unable to get following with id: ${req.params.userID}`)
-    })
-});
-
-// GET /api/followers
-router.get('/followers/:userID', function(req, res, next) {
-  models['friendlist']
-    .findAll({
-      attributes: ['requester'],
-      where: { requestee: req.params.userID, accepted:"1" }
-    })
-    .then(friendlist => {
-		if (friendlist.length==0){
-			res.send(`Unable to get followers with id: ${req.params.userID}`)
-		}
-		else{
-			res.json(friendlist)}
-		})
-    .catch(err => {
-      console.log(err)
-      return res.status(500).send(`Unable to get followers with id: ${req.params.userID}`)
+      return res.status(500).send(`Unable to get user ${params.userID}`)
     })
 });
 
@@ -139,7 +32,7 @@ router.post('/createUser', function(req, res, next) {
   }
 
   // Create record
-  models['users']
+  models['User']
     .create(params)
     .then(async user => {
       // Update password with hash
@@ -181,7 +74,7 @@ router.post('/login', (req, res, next) => {
     return res.status(412).send('Missing parameters')
   }
 
-  models['users']
+  models['User']
     .findOne({
       attributes: ['email', 'password'],
       where: { email: params.email }

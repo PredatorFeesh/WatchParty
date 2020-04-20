@@ -10,30 +10,24 @@ module.exports = {
       {
         firstName: 'Tim',
         lastName: 'Null',
-		age:10,
         email: 'tim@gmail.com',
         password: demoUserPassword,
-		isBanned:0,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         firstName: 'Jane',
         lastName: 'Null',
-		age:20,
         email: 'jane@gmail.com',
         password: demoUserPassword,
-		isBanned:0,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         firstName: 'John',
         lastName: 'Null',
-		age:30,
         email: 'john@gmail.com',
         password: demoUserPassword,
-		isBanned:0,
         createdAt: new Date(),
         updatedAt: new Date()
       }
