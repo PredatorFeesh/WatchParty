@@ -45,6 +45,10 @@
     display: flex;
 }
 
+.trailer-btn{
+    margin-left: 10px;
+}
+
 .to-watch-btn{
    margin-left: 10px;
 }

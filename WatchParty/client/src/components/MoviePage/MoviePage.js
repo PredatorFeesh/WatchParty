@@ -14,7 +14,8 @@ class MoviePage extends React.Component{
         super(props)
         
         this.state={
-            movieItem: []
+            movieItem: [],
+            trailerKey: ""
         }
 
         this.fetchMovieData = this.fetchMovieData.bind(this);
@@ -30,10 +31,22 @@ class MoviePage extends React.Component{
             {"id": this.props.match.params.movieId }, 
             data => {
                 var response = JSON.parse(data)
-                this.setState({movieItem: response})
+                this.setState({movieItem: response,})
             }, 
             err => console.log(err)
-        )
+        );
+
+        theMovieDb.movies.getVideos(
+            {"id": this.props.match.params.movieId },
+            data => {
+                var response = JSON.parse(data)
+                if(response.results.length > 0){
+                    this.setState({trailerKey: response.results[0].key})
+                    console.log(this.state.trailerKey) 
+                }  
+            },
+            err => console.log(err)
+        );
     }
 
     componentDidMount(){
@@ -41,7 +54,6 @@ class MoviePage extends React.Component{
     }
 
     render () {
-        console.log(this.state.movieItem)
         return (
             <div className="info-container">
               <div className="poster-container">
@@ -61,6 +73,13 @@ class MoviePage extends React.Component{
                   <Button className="read-more-btn" variant="secondary" target="_blank" href={`https://www.imdb.com/title/${this.state.movieItem.imdb_id}`}>
                     Read More
                   </Button>
+                  {this.state.trailerKey !== "" ? (
+                  <Button className="trailer-btn" variant="secondary" target="_blank" href={`https://www.youtube.com/watch?v=${this.state.trailerKey}`}>
+                    Watch Trailer
+                  </Button>) 
+                  : 
+                  (null)
+                  }
                   <Button className="to-watch-btn" variant="success">
                     Mark as to Watch
                   </Button>
