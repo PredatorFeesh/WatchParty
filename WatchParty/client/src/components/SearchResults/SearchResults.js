@@ -40,7 +40,6 @@ class SearchResults extends Component{
         },
           err => this.setState({movieItems: [], error: err, isLoading: false})
         )
-        console.log(this.state.movieItems)
     }
 
     componentDidMount(){
