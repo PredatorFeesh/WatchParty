@@ -24,7 +24,6 @@ jobs:
         git fetch --all
         git filter-branch --prune-empty --subdirectory-filter WatchParty/backend master
         echo -e "${BLUE}Fetched and prunned server${NORM}"
-
     - name: Delete heroku-depoy on remote repo
       env:
         INPUT_GITHUB_TOKEN: ${{ secrets.personal_github_token }}
@@ -33,11 +32,9 @@ jobs:
       run: |
         remote_repo="https://watchpartymainapp:${INPUT_GITHUB_TOKEN}@github.com/${REPOSITORY}.git"
         git push "${remote_repo}" --delete ${INPUT_BRANCH} --force;
-
     - name: Checkout new branch
       run: |
         git checkout -b heroku-deploy master
-
     - name: Push to Server Deploy Repo
       env:
         INPUT_GITHUB_TOKEN: ${{ secrets.personal_github_token }}
