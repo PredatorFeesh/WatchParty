@@ -1,3 +1,4 @@
+
 name: Push Backend to Test Repo
 on:
   push:
@@ -9,21 +10,37 @@ jobs:
     - uses: actions/checkout@v2
       with:
         persist-credentials: false
+        ref: sandbox
+
     - name: Set up remotes to Backend Test Repo
+      env:
+        BLUE: '\033[34'
+        NORM: '\033[0m'
       run: |
-        git remote add testing https://github.com/watchpartyappmain/watchparty-server-test.git
-        git fetch --all
-        git checkout -b sandbox-sync testing/master
         git config --global user.email "watchpartyappmain@gmail.com"
         git config --global user.name "watchpartyappmain"
+        echo -e "${BLUE}Config Succeeded${NORM}"
+        git remote add testing https://github.com/watchpartyappmain/watchparty-server-test.git
+        echo -e "${BLUE}Remote Added Successfully${NORM}"
+        git fetch --all
         git filter-branch --prune-empty --subdirectory-filter WatchParty/backend sandbox
-        git merge -X theirs sandbox --allow-unrelated-histories
-        git fetch --unshallow origin
-    - name: Push Backend to Test Repo
+        echo -e "${NORM}Fetched and prunned server#{NORM}"
+    - name: Delete heroku-depoy on remote repo
       env:
         INPUT_GITHUB_TOKEN: ${{ secrets.personal_github_token }}
         REPOSITORY: 'watchpartyappmain/watchparty-server-test'
-        INPUT_BRANCH: 'master'
+        INPUT_BRANCH: 'heroku-deploy'
+      run: |
+        remote_repo="https://watchpartymainapp:${INPUT_GITHUB_TOKEN}@github.com/${REPOSITORY}.git"
+        git push "${remote_repo}" --delete ${INPUT_BRANCH} --force;
+    - name: Checkout new branch
+      run: |
+        git checkout -b heroku-deploy sandbox
+    - name: Push to Server Test Repo
+      env:
+        INPUT_GITHUB_TOKEN: ${{ secrets.personal_github_token }}
+        REPOSITORY: 'watchpartyappmain/watchparty-server-test'
+        INPUT_BRANCH: 'heroku-deploy'
       run: |
         remote_repo="https://watchpartymainapp:${INPUT_GITHUB_TOKEN}@github.com/${REPOSITORY}.git"
         git push "${remote_repo}" HEAD:${INPUT_BRANCH} --follow-tags --force;
