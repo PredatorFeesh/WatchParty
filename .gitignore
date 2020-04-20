@@ -268,3 +268,5 @@ shellAppWorkspaces
 .env.test.local
 .env.production.local
 
+
+db.development.sqlite

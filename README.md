@@ -2,7 +2,7 @@
 
 ## What we do
 
-TODO
+We provide the user with a way to keep track of movie they have watched and want to watch. We also provide the user with the ability to invite friends to watch movies together.
 
 ## DEV: How to run
 
@@ -27,7 +27,7 @@ If you don't have nvm installed, run \
 
 You will need to install all the modules before you can run the code, for both backend and frontend.
 To install for the backend, navigate to WatchParty and install. \
-`cd WatchParty && npm install` \
+`cd WatchParty/backend && npm install` \
 \
 You will need to do the same for client \
 `cd WatchParty/client && npm install` \
@@ -38,12 +38,12 @@ And OPTIONALLY for mobile \
 ### Starting The Servers
 
 To start the backend, you will need to navigate to the main folder and run \
-`cd WatchParty && npm start` \
+`cd WatchParty/backend && npm start` \
 \
 In order to run the client, you will need to navigate to the client and run \
-`cd WatchParty/client && npm run start` \
+`cd WatchParty/client && npm run start`
 
-### Mobile
+### Mobile ( Support to be moved to frontend webapp )
 
 In order to run the mobile application, go into the mobile/WatchPart. \
 `cd WatchParty/mobile && sudo npm start` \

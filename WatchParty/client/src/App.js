@@ -1,4 +1,16 @@
 import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom"
+
+import Header from './components/Header/Header';
+import SearchResults from './components/SearchResults/SearchResults';
+import LandingPage from './components/LandingPage/LandingPage'
+
+library.add(
+  faUserCircle
+)
 
 class App extends Component {
   state = {
@@ -24,12 +36,15 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">{this.state.data}</p>
-      </div>
+      <>
+      <Router>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={LandingPage}/>
+          <Route exact path="/results" component={SearchResults}/>
+        </Switch>
+      </Router>
+      </>
     );
   }
 }
