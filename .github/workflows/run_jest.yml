@@ -13,14 +13,11 @@ jobs:
         node-version: [13.x]
     steps:
     - uses: actions/checkout@v2
-      with:
-        ref: ${{ github.ref }}
     - name: Run test on backend
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Run install on backend and test
-      run: |
+    - run: |
         cd WatchParty/backend/
         npm install
         npm run test
@@ -33,14 +30,11 @@ jobs:
         node-version: [13.x]
     steps:
     - uses: actions/checkout@v2
-      with:
-        ref: ${{ github.ref }}
     - name: Run test on frontend
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Run client install and test
-      run: |
+    - run: |
         cd WatchParty/client/
         npm install
         npm run test

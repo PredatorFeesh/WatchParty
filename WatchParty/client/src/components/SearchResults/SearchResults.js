@@ -5,7 +5,6 @@ import theMovieDb from 'themoviedb-javascript-library'
 import './SearchResults.css'
 
 theMovieDb.common.api_key = 'bd5800f4f98c685b042cd33a1a790365'
-theMovieDb.common.base_uri = 'https://api.themoviedb.org/3/'
 
 class SearchResults extends Component{
 
