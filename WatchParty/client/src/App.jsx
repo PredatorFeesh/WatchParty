@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
@@ -13,21 +13,19 @@ library.add(
   faUserCircle,
 );
 
-class App extends Component {
-  render() {
-    return (
-      <>
+function App() {
+  return (
+    <>
       <Router>
         <Header />
         <Switch>
-          <Route exact path="/" component={LandingPage}/>
-          <Route exact path="/results" component={SearchResults}/>
-          <Route exact path="/results/:movieId" component={MoviePage}/>
+          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/results" component={SearchResults} />
+          <Route exact path="/results/:movieId" component={MoviePage} />
         </Switch>
       </Router>
-      </>
-    );
-  };
-};
+    </>
+  );
+}
 
 export default App;

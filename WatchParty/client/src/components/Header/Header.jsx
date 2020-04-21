@@ -1,18 +1,23 @@
 import React from 'react';
-import { withRouter } from "react-router-dom"
-import { Nav, Navbar, NavDropdown } from 'react-bootstrap'
-import { Form, FormControl, Button } from 'react-bootstrap'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { withRouter } from "react-router-dom";
+import {
+  Nav,
+  Navbar,
+  NavDropdown,
+  Form,
+  FormControl,
+  Button,
+} from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import './Header.css'
+import './Header.css';
 
 class Header extends React.Component {
-
-  constructor(props){
+  constructor(props) {
     super(props);
 
-    this.state ={
-      searchText: ''
+    this.state = {
+      searchText: '',
     };
 
     this.handleTextChange = this.handleTextChange.bind(this);
@@ -26,9 +31,9 @@ class Header extends React.Component {
 
   handleTextChange(event) {
     this.setState( {searchText: event.target.value} );
-  }
+  };
 
-  handleSearchSubmit(event){
+  handleSearchSubmit(event) {
     if(this.state.searchText){
       let temp = this.state.searchText;
       this.setState( {searchText: ''} )
@@ -42,14 +47,14 @@ class Header extends React.Component {
       alert("Please enter a movie name!")
     }
 
-  }
+  };
 
   handleSearchKeyUp(event){
     event.preventDefault();
     if (event.key === 'Enter' && event.keyCode === 13) {
         this.handleSearchSubmit();
     }
-  }
+  };
 
   render () {
     return (
@@ -78,9 +83,7 @@ class Header extends React.Component {
       </Navbar>
       </>
     );
-  }
-
-
-}
+  };
+};
 
 export default withRouter(Header);
