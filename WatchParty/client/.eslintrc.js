@@ -26,5 +26,8 @@ module.exports = {
   ],
   rules: {
     quotes: 0,
+    'operator-linebreak': 0,
+    'arrow-parens': 1,
+    'no-use-before-define': 1,
   },
 };
