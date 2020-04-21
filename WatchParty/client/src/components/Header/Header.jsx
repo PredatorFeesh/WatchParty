@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './Header.css'
 
 class Header extends React.Component {
- 
+
   constructor(props){
     super(props);
 
