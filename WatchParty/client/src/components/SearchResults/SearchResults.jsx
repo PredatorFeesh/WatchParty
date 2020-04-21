@@ -97,22 +97,23 @@ class SearchResults extends Component{
                                     <div className="movie-title">
                                       { el.release_date !== undefined && el.release_date !== ""
                                         ?
-                                        (<div>
-                                          { el.title }
-                                          (
+                                        (
+                                          <div>
+                                            { el.title }
                                             { el.release_date.substring(0,4) }
-                                          )
                                           </div>
                                         )
                                         :
-                                        (
-                                          <div> { el.title } </div>
-                                        )
+                                        <div>
+                                          { el.title }
+                                        </div>
                                       }
                                     </div>
                                   </Link>
                                   <div className="movie-desc">
-                                    <div> { el.overview } </div>
+                                    <div>
+                                      { el.overview }
+                                    </div>
                                   </div>
                                 </div>
                             </div>
@@ -129,9 +130,9 @@ class SearchResults extends Component{
               </div>
             </>
           )
-        :
+          :
           (
-          <h3>No movie data retrieved. Try another search.</h3>
+            <h3>No movie data retrieved. Try another search.</h3>
           )
         }
       </>
