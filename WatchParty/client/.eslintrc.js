@@ -13,7 +13,7 @@ module.exports = {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
   },
-  parser: "babel-eslint",
+  parser: 'babel-eslint',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -25,9 +25,11 @@ module.exports = {
     'react',
   ],
   rules: {
-    quotes: 0,
+    // Note: 0 ignore, 1 warn, 2 error
+    'quotes': 0,
     'operator-linebreak': 0,
     'arrow-parens': 1,
     'no-use-before-define': 1,
+    'no-param-reassign': 1,
   },
 };
