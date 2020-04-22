@@ -12,18 +12,7 @@ module.exports = (sequelize, DataTypes) => {
 		allowNull:false,
 		unique:true,
 		validate:{notNull: true}
-		},
-    name: {
-		type:DataTypes.STRING(128),
-		allowNull:false,
-		validate:{notNull: true}
-	},
-    description: {
-		type:DataTypes.TEXT,
-		allowNull:false,
-		validate:{notNull: true}
-		
-  }},{
+		}},{
     freezeTableName: true
 	});
   movie.associate = function(models) {

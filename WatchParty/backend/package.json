@@ -25,6 +25,7 @@
     "sqlite3": "^4.1.1"
   },
   "devDependencies": {
-    "jest": "^25.3.0"
+    "jest": "^25.3.0",
+    "lint": "^0.7.0"
   }
 }
