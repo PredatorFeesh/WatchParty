@@ -25,6 +25,7 @@ jobs:
         CI: true
 
   repo-sync:
+    needs: test_backend
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
