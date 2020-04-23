@@ -43,6 +43,13 @@ To start the backend, you will need to navigate to the main folder and run \
 In order to run the client, you will need to navigate to the client and run \
 `cd WatchParty/client && npm run start`
 
+## Linting
+
+### Frontend
+
+We are following the airbnb eslint style. The full list can be found [at this link](https://github.com/airbnb/javascript/tree/master/react). This style specifically flows
+well with React.
+
 ### Mobile ( Support to be moved to frontend webapp )
 
 In order to run the mobile application, go into the mobile/WatchPart. \
