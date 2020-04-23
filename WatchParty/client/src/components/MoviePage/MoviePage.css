@@ -1,0 +1,54 @@
+.info-container {
+    margin: auto;
+    width : 95%;
+    margin-top: 30px;
+    display: flex;
+    height: min-content;
+}
+
+.poster-container{
+    width: min-content;
+    height: min-content;
+    border: 1px solid black;
+}
+
+.movie-details-container{
+    width: 100%;
+    height: auto;
+    margin-left: 20px;
+    padding-left: 5px;
+}
+
+.title-section{
+    width: 100%;
+    height: min-content;
+    font-size: xxx-large;
+}
+
+.overview {
+    width: 100%;
+    font-size: x-large;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+.description{
+    margin-top: 5px;
+    width: 80%;
+    height: min-content;
+}
+
+.btn-container{
+    margin-top: 20px;
+    width: 100%;
+    height: min-content;
+    display: flex;
+}
+
+.trailer-btn{
+    margin-left: 10px;
+}
+
+.to-watch-btn{
+   margin-left: 10px;
+}
