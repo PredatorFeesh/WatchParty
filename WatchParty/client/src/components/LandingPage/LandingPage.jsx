@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './LandingPage.css'
+import './LandingPage.css';
 
 class LandingPage extends React.Component {
   render() {
@@ -9,7 +9,7 @@ class LandingPage extends React.Component {
         <h1> LANDING PAGE</h1>
       </div>
     );
-  };
-};
+  }
+}
 
 export default LandingPage;
