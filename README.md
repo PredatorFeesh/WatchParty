@@ -45,7 +45,7 @@ In order to run the client, you will need to navigate to the client and run \
 
 ## Linting
 
-We are now subject to the mighty linter (deploy will soon be too).
+We are now subject to the mighty linter (deploy will soon be too). We follow airbnb (with some edits) on the frontend.
 
 ### Frontend
 
