@@ -24,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
 		foreignKey: 'userid',
 		onDelete: 'cascade'
 	});
+	    Movie.hasMany(models.Sublist);
   };
   return Movie;
 }

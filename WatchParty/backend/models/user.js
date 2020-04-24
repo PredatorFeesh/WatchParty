@@ -25,6 +25,8 @@ module.exports = (sequelize, DataTypes) => {
 	  freezeTableName: true
   })
   User.associate = function(models) {
+	    User.hasMany(models.Sublist);
+	  
   }
   return User
 }
