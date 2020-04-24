@@ -21,9 +21,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: { notNull: true, len: [8, 256] }
     }
-  }, {})
+  }, {
+	  freezeTableName: true
+  })
   User.associate = function(models) {
-    // associations can be defined here
   }
   return User
 }
