@@ -45,6 +45,8 @@ In order to run the client, you will need to navigate to the client and run \
 
 ## Linting
 
+We are now subject to the mighty linter (deploy will soon be too).
+
 ### Frontend
 
 We are following the airbnb eslint style. The full list can be found [at this link](https://github.com/airbnb/javascript/tree/master/react). This style specifically flows
