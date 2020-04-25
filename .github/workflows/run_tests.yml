@@ -28,7 +28,7 @@ jobs:
     - name: Run install on backend and test
       run: |
         cd WatchParty/backend/
-        npm install
+        npm ci
         npm run test
       env:
         CI: true
@@ -48,7 +48,47 @@ jobs:
     - name: Run client install and test
       run: |
         cd WatchParty/client/
-        npm install
+        npm ci
         npm run test
       env:
         CI: true
+    lint_frontend:
+      runs-on: [ubuntu-latest]
+      strategy:
+        matrix:
+          node-version: [13.x]
+      steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+      - name: Run lint on frontend
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Run lint on frontend
+        run: |
+          cd WatchParty/client/
+          npm ci
+          npm run lint
+        env:
+          CI: true
+    lint_backend:
+      runs-on: [ubuntu-latest]
+      strategy:
+        matrix:
+          node-version: [13.x]
+      steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+      - name: Run lint on backend
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Run client install and test
+        run: |
+          cd WatchParty/client/
+          npm ci
+          npm run lint
+        env:
+          CI: true
