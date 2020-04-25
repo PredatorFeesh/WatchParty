@@ -3,11 +3,13 @@ module.exports = (sequelize, DataTypes) => {
     userid: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      validate: { isEmail: true }
+	  unique: 'uniqueusermovie',
+      validate: { notNull: true }
     },
     tmdbid: {
       type: DataTypes.INTEGER,
       allowNull: false,
+	  unique: 'uniqueusermovie',
       validate: { notNull: true }
     },
     watchstate: {

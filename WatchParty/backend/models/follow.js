@@ -3,11 +3,13 @@ module.exports = (sequelize, DataTypes) => {
     followee: {
       type: DataTypes.INTEGER,
       allowNull: false,
+	  unique: 'following',
       validate: { notNull: true }
     },
     follower: {
       type: DataTypes.INTEGER,
       allowNull: false,
+	  unique: 'following',
       validate: { notNull: true }
     }
 },{

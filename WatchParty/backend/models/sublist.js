@@ -3,7 +3,6 @@ module.exports = (sequelize, DataTypes) => {
     name: {
 		type: DataTypes.STRING(32),
 		allowNull: false,
-		unique: 'uniquecombination',
 		validate: { notNull: true }
     },
     movie: {

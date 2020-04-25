@@ -6,12 +6,12 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
       validate: { isEmail: true }
     },
-    firstName: {
+    firstname: {
       type: DataTypes.STRING(32),
       allowNull: false,
       validate: { notNull: true }
     },
-    lastName: {
+    lastname: {
       type: DataTypes.STRING(32),
       allowNull: false,
       validate: { notNull: true }
