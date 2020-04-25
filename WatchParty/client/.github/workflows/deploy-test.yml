@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: Checks out repo
-        if: github.repository == 'watchpartyappmain/watch-party-frontend-test'
+        if: github.repository == 'watchpartyappmain/watchparty-frontend-test'
         uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
