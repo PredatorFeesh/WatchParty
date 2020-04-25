@@ -6,6 +6,8 @@ We provide the user with a way to keep track of movie they have watched and want
 
 ## DEV: How to run
 
+TODO
+
 ### NOTES
 
 - NOTE: All the `cd` portion assume you are in the base directory. If you know which directory to be in
@@ -23,7 +25,7 @@ every time in the base directory. If you don't have the right node version, run 
 If you don't have nvm installed, run \
 `wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash`
 
-### First Time Install
+### First Time Install (Needs update for backend*)
 
 You will need to install all the modules before you can run the code, for both backend and frontend.
 To install for the backend, navigate to WatchParty and install. \
@@ -35,7 +37,7 @@ You will need to do the same for client \
 And OPTIONALLY for mobile \
 `cd WatchParty/mobile && npm install`
 
-### Starting The Servers
+## Starting The Servers
 
 To start the backend, you will need to navigate to the main folder and run \
 `cd WatchParty/backend && npm start` \
@@ -44,6 +46,12 @@ In order to run the client, you will need to navigate to the client and run \
 `cd WatchParty/client && npm run start`
 
 ## Linting
+
+We are now subject to the mighty linter (deploy will soon be too). We follow airbnb (with some edits) on the frontend.
+
+## Database
+
+Sequelize (needs more description).
 
 ### Frontend
 

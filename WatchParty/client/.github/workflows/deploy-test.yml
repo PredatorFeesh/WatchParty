@@ -1,0 +1,33 @@
+name: Deploy branch to heroku
+
+on:
+  push:
+    branches: [heroku-deploy]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [13.x]
+
+    steps:
+      - name: Checks out repo
+        if: github.repository == 'watchpartyappmain/watchparty-frontend-test'
+        uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Run frontend tests
+        run: |
+          npm install
+          npm run test
+        env:
+          CI: true
+      - name: Deploy to Heroku
+        env:
+          HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
+          HEROKU_APP_NAME: "watch-party-test-web-client"
+        run: git push https://heroku:${HEROKU_API_TOKEN}@git.heroku.com/${HEROKU_APP_NAME}.git origin/master:master
