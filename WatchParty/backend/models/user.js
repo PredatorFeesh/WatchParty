@@ -6,12 +6,12 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
       validate: { isEmail: true }
     },
-    firstName: {
+    firstname: {
       type: DataTypes.STRING(32),
       allowNull: false,
       validate: { notNull: true }
     },
-    lastName: {
+    lastname: {
       type: DataTypes.STRING(32),
       allowNull: false,
       validate: { notNull: true }
@@ -21,9 +21,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: { notNull: true, len: [8, 256] }
     }
-  }, {})
+  }, {
+	  freezeTableName: true
+  })
   User.associate = function(models) {
-    // associations can be defined here
   }
   return User
 }
