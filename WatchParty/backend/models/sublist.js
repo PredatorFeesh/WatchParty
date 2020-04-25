@@ -3,11 +3,13 @@ module.exports = (sequelize, DataTypes) => {
     name: {
 		type: DataTypes.STRING(32),
 		allowNull: false,
+		unique:'namemovie',
 		validate: { notNull: true }
     },
     movie: {
 		type: DataTypes.INTEGER,
 		allowNull: false,
+		unique:'namemovie',
 		validate: { notNull: true }
     }
 },{
