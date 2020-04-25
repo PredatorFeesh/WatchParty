@@ -14,10 +14,10 @@ router.get('/userDetails/:userID', function(req, res, next) {
       attributes: ['firstname', 'lastname'],
       where: { id: req.params.userID }
     })
-    .then(user => res.json(user))
+    .then(user => res.status(200).json({ message: 'Success', user }))
     .catch(err => {
       console.log(err)
-      return res.status(500).send(`Unable to get user ${params.userID}`)
+      return res.status(500).send({ message: `Unable to get user ${params.userID}` })
     })
 });
 
@@ -38,19 +38,19 @@ router.post('/createUser', function(req, res, next) {
       // Update password with hash
       user.password = await bcrypt.hash(user.password, config.salt_rounds)
       user.save()
-      res.json({ message: `Created user with email: ${user.email}`})
+      res.status(200).json({ message: 'Success', details: `Created user with email: ${user.email}` })
     }).catch(err => {
       if (err instanceof UniqueConstraintError) {
         console.log(err)
-        return res.status(412).send('An account already exists with that email')
+        return res.status(412).send({ message: 'An account already exists with that email' })
       }
       else if (err instanceof ValidationError) {
         console.log(err)
-        return res.status(412).send(err.message)
+        return res.status(412).send({ message: err.message })
       }
       else {
         console.log(err)
-        return res.status(500).send('Unable to create user')
+        return res.status(500).send({ message: 'Unable to create user' })
       }
     })
 });
@@ -59,7 +59,7 @@ router.post('/createUser', function(req, res, next) {
 router.post('/login', (req, res, next) => {
   // Check if already logged in
   if (req.session.user !== undefined) {
-    return res.json({ message: `Already logged in as ${req.session.user.email}` })
+    return res.status(200).json({ message: `Already logged in as ${req.session.user.email}` })
   }
 
   // Collect parameters
@@ -71,7 +71,7 @@ router.post('/login', (req, res, next) => {
   // Validate parameters
   const validationCheck = Object.values(params).every(val => val !== undefined)
   if (!validationCheck) {
-    return res.status(412).send('Missing parameters')
+    return res.status(412).send({ message: 'Missing parameters' })
   }
 
   models['User']
@@ -83,7 +83,7 @@ router.post('/login', (req, res, next) => {
       const match = await bcrypt.compare(params.password, user.password)
       if (match) {
         req.session.user = user
-        return res.json({ message: `Successfully logged in as ${user.email}` })
+        return res.status(200).json({ message: 'Success', details: `Logged in as ${user.email}` })
       }
       else {
         throw new Error('Incorrect login credentials')
@@ -91,11 +91,11 @@ router.post('/login', (req, res, next) => {
     }).catch(err => {
       if (err.message === 'Incorrect login credentials') {
         console.log(err)
-        return res.status(403).send(err.message)
+        return res.status(403).send({ message: err.message })
       }
       else {
         console.log(err)
-        return res.status(500).send('Incorrect login credentials')
+        return res.status(500).send({ message: 'Incorrect login credentials' })
       }
     })
 })
@@ -107,13 +107,13 @@ router.post('/logout', (req, res, next) => {
     req.session.destroy(err => {
       if (err) {
         console.log(err)
-        return res.status(500).send('Unable to logout')
+        return res.status(500).send({ message: 'Unable to logout' })
       }
-      return res.json({ message: 'You have successfully logged out' })
+      return res.status(200).json({ message: 'Sucess', details: 'You are now logged out' })
     })
   }
   else {
-    return res.status(401).send('Already logged out')
+    return res.status(401).send({ message: 'Already logged out'})
   }
 })
 
