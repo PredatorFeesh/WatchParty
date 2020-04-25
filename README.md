@@ -6,6 +6,8 @@ We provide the user with a way to keep track of movie they have watched and want
 
 ## DEV: How to run
 
+TODO
+
 ### NOTES
 
 - NOTE: All the `cd` portion assume you are in the base directory. If you know which directory to be in
