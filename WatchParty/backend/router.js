@@ -11,7 +11,7 @@ const models = require('./models')
 router.get('/userDetails/:userID', function(req, res, next) {
   models['User']
     .findOne({
-      attributes: ['firstName', 'lastName'],
+      attributes: ['firstname', 'lastname'],
       where: { id: req.params.userID }
     })
     .then(user => res.json(user))
@@ -27,8 +27,8 @@ router.post('/createUser', function(req, res, next) {
   const params = {
     email: req.body.email,
     password: req.body.password,
-    firstName: req.body.firstName,
-    lastName: req.body.lastName
+    firstname: req.body.firstname,
+    lastname: req.body.lastname
   }
 
   // Create record
