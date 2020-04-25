@@ -35,7 +35,7 @@ You will need to do the same for client \
 And OPTIONALLY for mobile \
 `cd WatchParty/mobile && npm install`
 
-### Starting The Servers
+## Starting The Servers
 
 To start the backend, you will need to navigate to the main folder and run \
 `cd WatchParty/backend && npm start` \
@@ -46,6 +46,10 @@ In order to run the client, you will need to navigate to the client and run \
 ## Linting
 
 We are now subject to the mighty linter (deploy will soon be too). We follow airbnb (with some edits) on the frontend.
+
+## Database
+
+Sequelize (needs more description).
 
 ### Frontend
 
