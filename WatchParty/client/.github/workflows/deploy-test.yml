@@ -1,10 +1,8 @@
 name: Deploy branch to heroku
 
 on:
-  release:
   push:
-    types:
-      - create
+    branches: [heroku-deploy]
 
 jobs:
   build:
@@ -15,7 +13,7 @@ jobs:
         node-version: [13.x]
 
     steps:
-      - if: github.ref == 'refs/heads/heroku-deploy' && github.repository == 'watchpartyappmain/watch-party-frontend-test'
+      - if: github.repository == 'watchpartyappmain/watch-party-frontend-test'
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
