@@ -6,7 +6,9 @@
     "start": "nodemon ./bin/www",
     "build": "node ./bin/www",
     "lint": "eslint . --ext .js --ignore-pattern node_modules/",
-    "test": "jest"
+    "test": "mocha",
+    "test:watch": "mocha --watch",
+    "test:watch:min": "mocha --watch --reporter min"
   },
   "dependencies": {
     "bcrypt": "^4.0.1",
