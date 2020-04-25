@@ -23,7 +23,7 @@ every time in the base directory. If you don't have the right node version, run 
 If you don't have nvm installed, run \
 `wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash`
 
-### First Time Install (Needs update for backend)
+### First Time Install (Needs update for backend*)
 
 You will need to install all the modules before you can run the code, for both backend and frontend.
 To install for the backend, navigate to WatchParty and install. \
