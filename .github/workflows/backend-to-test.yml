@@ -25,7 +25,7 @@ jobs:
         CI: true
     - name: Run linter on backend
       run: |
-        cd WatchParty/client/
+        cd WatchParty/backend/
         npm ci
         npm run lint
       env:
