@@ -14,13 +14,11 @@ module.exports = (sequelize, DataTypes) => {
     freezeTableName: true
 	});
 	Follow.associate = function(models) {
-	    Follow.belongsToMany(models.User,{
-		through:'account',
+	    Follow.belongsTo(models.User,{
 		foreignKey: 'followee',
 		onDelete: 'cascade'
 	});
-	Follow.belongsToMany(models.User,{
-		through:'account',
+	Follow.belongsTo(models.User,{
 		foreignKey: 'follower',
 		onDelete: 'cascade'
 	});}

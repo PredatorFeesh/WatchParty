@@ -6,12 +6,6 @@ module.exports = (sequelize, DataTypes) => {
 		unique: 'uniquecombination',
 		validate: { notNull: true }
     },
-    userid: {
-		type: DataTypes.INTEGER,
-		allowNull: false,
-		unique:'uniquecombination',
-		validate: { notNull: true }
-    },
     movie: {
 		type: DataTypes.INTEGER,
 		allowNull: false,
@@ -21,10 +15,6 @@ module.exports = (sequelize, DataTypes) => {
     freezeTableName: true
 	});
 	Sublist.associate = function(models) {
-	    Sublist.belongsTo(models.User,{
-		foreignKey: 'userid',
-		onDelete: 'cascade'
-	});
 	Sublist.belongsTo(models.Movie,{
 		foreignKey: 'movie',
 		onDelete: 'cascade'
