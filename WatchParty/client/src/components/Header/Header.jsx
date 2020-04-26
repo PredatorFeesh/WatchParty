@@ -8,7 +8,8 @@ import {
   FormControl,
   Button,
 } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 
 import './Header.css';
 
@@ -72,7 +73,7 @@ class Header extends React.Component {
             </Nav>
             <Nav>
               <NavDropdown
-                title=<FontAwesomeIcon icon="user-circle" size="2x" />
+                title={<FontAwesomeIcon icon={faUserCircle} size="2x" />}
                 id="collapsible-nav-dropdown"
                 alignRight
               >
