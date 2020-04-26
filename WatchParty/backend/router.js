@@ -14,10 +14,13 @@ router.get('/userDetails/:userID', function(req, res, next) {
       attributes: ['firstname', 'lastname'],
       where: { id: req.params.userID }
     })
-    .then(user => res.status(200).json({ message: 'Success', user }))
+    .then(user => {
+      if (!user) throw Error()
+      return res.status(200).json({ message: 'Success', user })
+    })
     .catch(err => {
       console.log(err)
-      return res.status(500).send({ message: `Unable to get user ${params.userID}` })
+      return res.status(404).send({ message: `Unable to get user ${req.params.userID}` })
     })
 });
 
