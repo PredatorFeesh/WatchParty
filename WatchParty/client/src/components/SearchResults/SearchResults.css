@@ -50,3 +50,59 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+
+@media all and (max-width: 500px){
+    .search-result-text{
+        margin: auto;
+        width: 80%;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    
+    .search-tiles-container{
+        width: 90%;
+        margin: auto;
+    }
+    
+    .movie-item-container{
+        overflow: scroll;
+        background-color: #a3a3a3;
+        border: 3px solid black;
+        width: 100%;
+        height: 250px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        border-radius: 25px; 
+    }
+    
+    .img-container{
+        width: min-content;
+    }
+    
+    .img-container{
+        margin-left: 10px;
+        margin-right: 15px;
+    }
+    
+    .title-desc-container{
+        margin-right: 10px;
+        max-height: 245px;
+    }
+    
+    .movie-title{
+        font-size: 150%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .movie-desc{
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
