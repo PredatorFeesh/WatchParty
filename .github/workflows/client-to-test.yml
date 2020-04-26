@@ -19,8 +19,15 @@ jobs:
     - name: Run client install and test
       run: |
         cd WatchParty/client/
-        npm install
+        npm ci
         npm run test
+      env:
+        CI: true
+    - name: Run linter on client
+      run: |
+        cd WatchParty/client/
+        npm ci
+        npm run lint
       env:
         CI: true
 
