@@ -3,29 +3,29 @@ module.exports = (sequelize, DataTypes) => {
     userid: {
       type: DataTypes.INTEGER,
       allowNull: false,
-	  unique: 'uniqueusermovie',
+    unique: 'uniqueusermovie',
       validate: { notNull: true }
     },
     tmdbid: {
       type: DataTypes.INTEGER,
       allowNull: false,
-	  unique: 'uniqueusermovie',
+    unique: 'uniqueusermovie',
       validate: { notNull: true }
     },
     watchstate: {
       type: DataTypes.ENUM,
-	  values:['watched','to-watch','not-interested'],
+    values:['watched','to-watch','not-interested'],
       allowNull: false,
       validate: { notNull: true }
     }
 },{
     freezeTableName: true
-	});
+  });
   Movie.associate = function(models) {
-	    Movie.belongsTo(models.User,{
-		foreignKey: 'userid',
-		onDelete: 'cascade'
-	});
+      Movie.belongsTo(models.User,{
+    foreignKey: 'userid',
+    onDelete: 'cascade'
+  });
   };
   return Movie;
 }

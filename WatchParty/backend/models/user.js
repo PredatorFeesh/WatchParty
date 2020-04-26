@@ -22,9 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       validate: { notNull: true, len: [8, 256] }
     }
   }, {
-	  freezeTableName: true
+    freezeTableName: true
   })
-  User.associate = function(models) {
-  }
   return User
 }
