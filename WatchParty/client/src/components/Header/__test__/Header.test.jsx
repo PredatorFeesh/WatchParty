@@ -1,41 +1,28 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
-import { BrowserRouter as Router} from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import { mount } from 'enzyme';
 
 import Header from '../Header';
 
-test("searchbox and search button render properly", () => {
-  const { queryByTestId } = render(<Router> 
-    {' '}
-    <Header />
-    {' '}
-    </Router> );
-  expect(queryByTestId("search-button")).toBeTruthy();
-  expect(queryByTestId("search-field")).toBeTruthy();
+describe("search field and search button functionality", () => {
+  const container = mount(<Router><Header /></Router>);
+  it("rendered search field", () => {
+    expect(container.find({ 'data-testid': 'search-field' })).toBeTruthy();
+  });
+  it("rendered search button", () => {
+    expect(container.find({ 'data-testid': 'search-button' })).toBeTruthy();
+  });
+  it("input in search-field updates", () => {
+    container.find({ 'data-testid': 'search-field' }).at(1).simulate('change', { target: { value: 'some movie search' } });
+    expect(container.find({ 'data-testid': 'search-field' }).at(1).props().value).toEqual('some movie search');
+  });
 });
 
-describe("input into searchbox", () =>{
-  test("updates", () => {
-    const { queryByTestId } = render(<Router> 
-      {' '}
-      <Header />
-      {' '}
-       </Router> );
-    const searchInput = queryByTestId('search-field');
-    fireEvent.change(searchInput, {target: {value: "test"} } );
-    expect(searchInput.value).toBe("test");
-  })
-
-  test("handleSearch gets called", () =>{
-    const handleSearchSubmit = jest.fn();
-    const { queryByTestId } = render(<Router> 
-      {' '}
-      <Header onSubmit={handleSearchSubmit}/>
-      {' '}
-       </Router> );
-    const searchButton = queryByTestId('search-button');
-    fireEvent.click(searchButton);
-    expect(handleSearchSubmit).toHaveBeenCalledTimes(1);
-  })
+describe("functions get called", () => {
+  it("empty search calls window.alert box", () => {
+    window.alert = jest.fn();
+    const container = mount(<Router><Header /></Router>);
+    container.find({ 'data-testid': 'search-button' }).at(1).simulate("click");
+    expect(window.alert).toHaveBeenCalled();
+  });
 });
-

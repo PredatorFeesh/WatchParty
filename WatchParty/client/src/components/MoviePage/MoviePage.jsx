@@ -56,6 +56,7 @@ class MoviePage extends React.Component {
       <div className="info-container">
         <div className="poster-container">
           <img
+            data-testid="poster-img"
             onError={this.defaultPoster}
             src={`https://image.tmdb.org/t/p/w1280${movieItem.poster_path}`}
             width="260px"
@@ -70,7 +71,7 @@ class MoviePage extends React.Component {
                 movieItem.release_date !== ""
                 ?
                 (
-                  <div>
+                  <div data-testid="title-release-date-div">
                     {' '}
                     {movieItem.title}
                     {' '}

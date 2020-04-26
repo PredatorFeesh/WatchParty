@@ -65,7 +65,7 @@ class Header extends React.Component {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
-              <Form data-testid="search-form" inline onSubmit={(event) => { event.preventDefault(); }}>
+              <Form inline onSubmit={(event) => { event.preventDefault(); }}>
                 <FormControl data-testid="search-field" onChange={(this.handleTextChange)} value={searchText} onKeyUp={this.handleSearchKeyUp} type="text" placeholder="Search for movies" className="mr-sm-2" />
                 <Button data-testid="search-button" onClick={this.handleSearchSubmit} variant="outline-info">Search</Button>
               </Form>
