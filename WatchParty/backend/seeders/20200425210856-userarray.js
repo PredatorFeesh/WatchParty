@@ -3,7 +3,7 @@ const env = process.env.NODE_ENV || 'development'
 const config = require('../config/config.js')[env]
 
 module.exports = {
-  up: async(queryInterface, Sequelize) => {
+  up: async(queryInterface, Sequelize) => { // eslint-disable-line no-unused-vars
     const demoUserPassword = await bcrypt.hash(config.demo_user_password, config.salt_rounds)
 	let usersArray = [];
 	for(let i = 0; i < 100;i++){
@@ -15,11 +15,11 @@ module.exports = {
 			createdAt:new Date(),
 			updatedAt:new Date()
 		})
-	};
+	}
     return queryInterface.bulkInsert("User", usersArray);
   },
 
-  down: (queryInterface, Sequelize) => {
+  down: (queryInterface, Sequelize) => { // eslint-disable-line no-unused-vars
     return queryInterface.bulkDelete("User", null);
   }
 };

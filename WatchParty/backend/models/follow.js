@@ -3,26 +3,26 @@ module.exports = (sequelize, DataTypes) => {
     followee: {
       type: DataTypes.INTEGER,
       allowNull: false,
-	  unique: 'following',
+    unique: 'following',
       validate: { notNull: true }
     },
     follower: {
       type: DataTypes.INTEGER,
       allowNull: false,
-	  unique: 'following',
+    unique: 'following',
       validate: { notNull: true }
     }
 },{
     freezeTableName: true
-	});
-	Follow.associate = function(models) {
-	    Follow.belongsTo(models.User,{
-		foreignKey: 'followee',
-		onDelete: 'cascade'
-	});
-	Follow.belongsTo(models.User,{
-		foreignKey: 'follower',
-		onDelete: 'cascade'
-	});}
+  });
+  Follow.associate = function(models) {
+      Follow.belongsTo(models.User,{
+    foreignKey: 'followee',
+    onDelete: 'cascade'
+  });
+  Follow.belongsTo(models.User,{
+    foreignKey: 'follower',
+    onDelete: 'cascade'
+  });}
   return Follow;
 }

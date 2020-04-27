@@ -1,6 +1,5 @@
 const createError = require('http-errors')
 const express = require('express')
-const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const session = require('express-session')
@@ -38,8 +37,7 @@ app.use(function(req, res, next) {
 })
 
 // error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
+app.use(function(err, req, res, next) { // eslint-disable-line no-unused-vars
   res.locals.message = err.message
   res.locals.error = req.app.get('env') === 'development' ? err : {}
 

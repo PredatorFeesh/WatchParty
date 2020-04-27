@@ -8,7 +8,7 @@ const config = require('./config/config.js')[env];
 const models = require('./models')
 
 // GET /api/userDetails
-router.get('/userDetails/:userID', function(req, res, next) {
+router.get('/userDetails/:userID', function(req, res) {
   models['User']
     .findOne({
       attributes: ['firstname', 'lastname'],
@@ -25,7 +25,7 @@ router.get('/userDetails/:userID', function(req, res, next) {
 });
 
 // POST /api/createUser
-router.post('/createUser', function(req, res, next) {
+router.post('/createUser', function(req, res) {
   // Collect parameters
   const params = {
     email: req.body.email,
@@ -59,7 +59,7 @@ router.post('/createUser', function(req, res, next) {
 });
 
 // POST /api/login
-router.post('/login', (req, res, next) => {
+router.post('/login', (req, res) => {
   // Check if already logged in
   if (req.session.user !== undefined) {
     return res.status(200).json({ message: `Already logged in as ${req.session.user.email}` })
@@ -104,7 +104,7 @@ router.post('/login', (req, res, next) => {
 })
 
 // POST /api/logout
-router.post('/logout', (req, res, next) => {
+router.post('/logout', (req, res) => {
   // Check if already logged in
   if (req.session.user !== undefined) {
     req.session.destroy(err => {
