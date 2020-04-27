@@ -135,9 +135,4 @@ class MoviePage extends React.Component {
   }
 }
 
-MoviePage.propTypes = {
-  movieId: PropTypes.string.isRequired,
-  match: PropTypes.objectOf(PropTypes.any).isRequired,
-};
-
 export default MoviePage;

@@ -144,8 +144,4 @@ class SearchResults extends Component {
   }
 }
 
-SearchResults.propTypes = {
-  location: PropTypes.isRequired,
-};
-
 export default SearchResults;

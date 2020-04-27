@@ -88,8 +88,4 @@ class Header extends React.Component {
   }
 }
 
-Header.propTypes = {
-  history: PropTypes.objectOf(PropTypes.any).isRequired,
-};
-
 export default withRouter(Header);
