@@ -25,5 +25,5 @@ module.exports = {
     use_env_variable: 'DATABASE_URL',
     session_secret: process.env.SESSION_SECRET,
     salt_rounds: 10,
-  }
-}
+  },
+};
