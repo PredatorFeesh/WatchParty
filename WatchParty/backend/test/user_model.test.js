@@ -1,23 +1,23 @@
-const { expect } = require('chai')
+const { expect } = require('chai');
 
 const {
   sequelize,
   dataTypes,
   checkModelName,
   checkUniqueIndex,
-  checkPropertyExists
-} = require('sequelize-test-helpers')
+  checkPropertyExists,
+} = require('sequelize-test-helpers');
 
-const UserModel = require('../models/user')
+const UserModel = require('../models/user');
 
-describe('models/user', function() {
-  const User = UserModel(sequelize, dataTypes)
-  const user = new User
+describe('models/user', () => {
+  const User = UserModel(sequelize, dataTypes);
+  const user = new User();
 
-  checkModelName(User)('User')
+  checkModelName(User)('User');
   context('properties', () => {
-    ;['email', 'firstname', 'lastname', 'password'].forEach(
-      checkPropertyExists(user)
-    )
-  })
-})
+    ['email', 'firstname', 'lastname', 'password'].forEach(
+      checkPropertyExists(user),
+    );
+  });
+});
