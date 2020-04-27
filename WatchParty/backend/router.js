@@ -19,10 +19,9 @@ router.get('/userDetails/:userID', (req, res) => {
       if (!user) throw Error();
       return res.status(200).json({ message: 'Success', user });
     })
-    .catch((err) => {
-      console.log(err);
-      return res.status(404).send({ message: `Unable to get user ${req.params.userID}` });
-    });
+    .catch(() => res.status(404).send({
+      message: `Unable to get user ${req.params.userID}`,
+    }));
 });
 
 // POST /api/createUser
@@ -40,18 +39,17 @@ router.post('/createUser', (req, res) => {
     .create(params)
     .then(async (user) => {
       // Update password with hash
+      /* eslint-disable no-param-reassign */
       user.password = await bcrypt.hash(user.password, config.salt_rounds);
+      /* eslint-enable no-param-reassign */
       user.save();
       res.status(200).json({ message: 'Success', details: `Created user with email: ${user.email}` });
     }).catch((err) => {
       if (err instanceof UniqueConstraintError) {
-        console.log(err);
         return res.status(412).send({ message: 'An account already exists with that email' });
       } if (err instanceof ValidationError) {
-        console.log(err);
         return res.status(412).send({ message: err.message });
       }
-      console.log(err);
       return res.status(500).send({ message: 'Unable to create user' });
     });
 });
@@ -90,12 +88,13 @@ router.post('/login', (req, res) => {
       throw new Error('Incorrect login credentials');
     }).catch((err) => {
       if (err.message === 'Incorrect login credentials') {
-        console.log(err);
         return res.status(403).send({ message: err.message });
       }
-      console.log(err);
       return res.status(500).send({ message: 'Incorrect login credentials' });
     });
+
+  // If an success or error isn't already triggered then return an error
+  return res.status(500).send({ message: 'Unable to login' });
 });
 
 // POST /api/logout
@@ -104,7 +103,6 @@ router.post('/logout', (req, res) => {
   if (req.session.user !== undefined) {
     req.session.destroy((err) => {
       if (err) {
-        console.log(err);
         return res.status(500).send({ message: 'Unable to logout' });
       }
       return res.status(200).json({ message: 'Sucess', details: 'You are now logged out' });
@@ -112,6 +110,9 @@ router.post('/logout', (req, res) => {
   } else {
     return res.status(401).send({ message: 'Already logged out' });
   }
+
+  // If an success or error isn't already triggered then return an error
+  return res.status(500).send({ message: 'Unable to logout' });
 });
 
 module.exports = router;
