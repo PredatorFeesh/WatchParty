@@ -27,5 +27,13 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'cascade',
     });
   };
+  Movie.getUser = function(movieid) {
+	return Movie.findOne({attributes:['userid'],where:{id:movieid}});
+  }
+  
+  Movie.getSublistBelongsTo = function(movieid) {
+	var Sublist = this.sequelize.import('sublist.js');
+	return Sublist.findAll({attributes:['name'],where:{movie:movieid}});
+  };
   return Movie;
 };
