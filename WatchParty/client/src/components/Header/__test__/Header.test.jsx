@@ -4,7 +4,7 @@ import { mount } from 'enzyme';
 
 import Header from '../Header';
 
-describe("search field and search button functionality", () => {
+describe("search field and search button rendered properly", () => {
   const container = mount(<Router><Header /></Router>);
   it("rendered search field", () => {
     expect(container.find({ 'data-testid': 'search-field' })).toBeTruthy();

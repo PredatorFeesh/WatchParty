@@ -8,8 +8,9 @@ import {
   FormControl,
   Button,
 } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import PropTypes from 'prop-types';
 
 import './Header.css';
 
@@ -86,5 +87,9 @@ class Header extends React.Component {
     );
   }
 }
+
+Header.propTypes = {
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
+};
 
 export default withRouter(Header);

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
 import theMovieDb from 'themoviedb-javascript-library';
 
@@ -28,9 +29,9 @@ class MoviePage extends React.Component {
   defaultPoster = (event) => { event.target.src = "/default.png"; }
 
   fetchMovieData() {
-    const { params } = this.props.match;
+    const { movieId } = this.props.match.params;
     theMovieDb.movies.getById(
-      { id: params.movieId },
+      { id: movieId },
       (data) => {
         const response = JSON.parse(data);
         this.setState({ movieItem: response });
@@ -39,7 +40,7 @@ class MoviePage extends React.Component {
     );
 
     theMovieDb.movies.getVideos(
-      { id: params.movieId },
+      { id: movieId },
       (data) => {
         const response = JSON.parse(data);
         if (response.results.length > 0) {
@@ -133,5 +134,10 @@ class MoviePage extends React.Component {
     );
   }
 }
+
+MoviePage.propTypes = {
+  movieId: PropTypes.string.isRequired,
+  match: PropTypes.objectOf(PropTypes.any).isRequired,
+};
 
 export default MoviePage;

@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 
 import MoviePage from '../MoviePage';
 
-describe("rendered correctly with test movieItem and trailerKey", () => {
+describe("rendered correctly with dummy movieItem and trailerKey", () => {
   const testMovieItem = {
     poster_path: "/test.jpg",
     release_date: "2020-11-11",
@@ -16,7 +16,7 @@ describe("rendered correctly with test movieItem and trailerKey", () => {
     params: { movieId: '1234' }, isExact: true, path: "", url: "",
   };
   const fetchMovieFn = jest.fn(match);
-  const container = mount(<MoviePage match={match} fetchMovieData={fetchMovieFn} />);
+  const container = mount(<MoviePage match={match} movieId="1234" fetchMovieData={fetchMovieFn} />);
   container.setState({ movieItem: testMovieItem, trailerKey: testTrailerKey });
   it("movie poster has correct link", () => {
     expect(container.find({ 'data-testid': 'poster-img' }).prop("src")).toEqual("https://image.tmdb.org/t/p/w1280/test.jpg");
@@ -33,7 +33,16 @@ describe("rendered correctly with test movieItem and trailerKey", () => {
   it("watch trailer button links to youtube video", () => {
     expect(container.find({ className: 'trailer-btn' }).at(0).prop("href")).toEqual("https://www.youtube.com/watch?v=abc");
   });
-  it("mark as to watch button rendered", () => {
+  it("mark as to watch button renders", () => {
     expect(container.find({ className: 'to-watch-btn' })).toBeTruthy();
   });
+});
+
+it("ensure fetchMovieData gets called on when component mounts", () => {
+  const testMatch = {
+    params: { movieId: '1234' }, isExact: true, path: "", url: "",
+  };
+  const fetchMovieSpy = jest.spyOn(MoviePage.prototype, "fetchMovieData");
+  mount(<MoviePage match={testMatch} movieId="1234" />);
+  expect(fetchMovieSpy).toHaveBeenCalled();
 });

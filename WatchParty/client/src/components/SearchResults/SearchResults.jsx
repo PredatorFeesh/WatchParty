@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 import theMovieDb from 'themoviedb-javascript-library';
 
@@ -142,5 +143,9 @@ class SearchResults extends Component {
     );
   }
 }
+
+SearchResults.propTypes = {
+  location: PropTypes.isRequired,
+};
 
 export default SearchResults;
