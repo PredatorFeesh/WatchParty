@@ -7,7 +7,7 @@ module.exports = {
   up: async (queryInterface, Sequelize) => { // eslint-disable-line no-unused-vars
     const demoUserPassword = await bcrypt.hash(config.demo_user_password, config.salt_rounds);
     const usersArray = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 100; i += 1) {
       usersArray.push({
         email: `testemail${i}@gmail.com`,
         firstname: `firstname${i}`,
@@ -20,7 +20,7 @@ module.exports = {
     return queryInterface.bulkInsert("User", usersArray);
   },
 
-  down: (queryInterface, Sequelize) => // eslint-disable-line no-unused-vars
-    queryInterface.bulkDelete("User", null),
-
+  /* eslint-disable no-unused-vars */
+  down: (queryInterface, Sequelize) => queryInterface.bulkDelete("User", null),
+  /* eslint-enable no-unused-vars */
 };
