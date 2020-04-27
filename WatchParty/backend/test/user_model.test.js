@@ -1,10 +1,8 @@
-const { expect } = require('chai');
-
+/* eslint-env mocha */
 const {
   sequelize,
   dataTypes,
   checkModelName,
-  checkUniqueIndex,
   checkPropertyExists,
 } = require('sequelize-test-helpers');
 
