@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     freezeTableName: true,
   });
-  Movie.associate = function (models) {
+  Movie.associate = (models) => {
     Movie.belongsTo(models.User, {
       foreignKey: 'userid',
       onDelete: 'cascade',

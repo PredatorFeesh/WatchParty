@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     freezeTableName: true,
   });
-  Sublist.associate = function (models) {
+  Sublist.associate = (models) => {
     Sublist.belongsTo(models.Movie, {
       foreignKey: 'movie',
       onDelete: 'cascade',

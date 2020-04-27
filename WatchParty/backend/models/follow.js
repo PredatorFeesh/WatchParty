@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     freezeTableName: true,
   });
-  Follow.associate = function (models) {
+  Follow.associate = (models) => {
     Follow.belongsTo(models.User, {
       foreignKey: 'followee',
       onDelete: 'cascade',
