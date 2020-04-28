@@ -27,14 +27,12 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'cascade',
     });
   };
-  
-  Movie.prototype.getUser = function() {
-	return this.userid
-  }
-  
-  Movie.getSublistBelongsTo = function(movieid) {
-	var Sublist = this.sequelize.import('sublist.js');
-	return Sublist.findAll({attributes:['name'],where:{movie:movieid}});
+  Movie.prototype.getUser = function () {
+    return this.userid;
+  };
+  Movie.getSublistBelongsTo = function (movieid) {
+    const Sublist = this.sequelize.import('sublist.js');
+    return Sublist.findAll({ attributes: ['name'], where: { movie: movieid } });
   };
   return Movie;
 };
