@@ -19,19 +19,16 @@ class MoviePage extends React.Component {
     };
 
     this.fetchMovieData = this.fetchMovieData.bind(this);
-    this.defaultPoster = this.defaultPoster.bind(this);
   }
 
   componentDidMount() {
     this.fetchMovieData();
   }
 
-  defaultPoster = (event) => { event.target.src = "/default.png"; }
-
   fetchMovieData() {
-    const { movieId } = this.props.match.params;
+    const { match } = this.props;
     theMovieDb.movies.getById(
-      { id: movieId },
+      { id: match.params.movieId },
       (data) => {
         const response = JSON.parse(data);
         this.setState({ movieItem: response });
@@ -40,7 +37,7 @@ class MoviePage extends React.Component {
     );
 
     theMovieDb.movies.getVideos(
-      { id: movieId },
+      { id: match.params.movieId },
       (data) => {
         const response = JSON.parse(data);
         if (response.results.length > 0) {
@@ -58,7 +55,7 @@ class MoviePage extends React.Component {
         <div className="poster-container">
           <img
             data-testid="poster-img"
-            onError={this.defaultPoster}
+            onError={(event) => { event.target.src = "/default.png"; }}
             src={`https://image.tmdb.org/t/p/w1280${movieItem.poster_path}`}
             width="260px"
             height="380px"
@@ -134,5 +131,13 @@ class MoviePage extends React.Component {
     );
   }
 }
+
+MoviePage.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      movieId: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
+};
 
 export default MoviePage;
