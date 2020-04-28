@@ -19,13 +19,9 @@
     "express-session": "^1.17.0",
     "http-errors": "~1.7.3",
     "morgan": "~1.10.0",
-    "nodemon": "^2.0.3",
     "pg": "^8.0.2",
     "pg-hstore": "^2.3.3",
-    "sequelize": "^5.21.6",
-    "sequelize-cli": "^5.5.1",
-    "sinon-chai": "^3.5.0",
-    "sqlite3": "^4.1.1"
+    "sequelize": "^5.21.6"
   },
   "devDependencies": {
     "chai": "^4.2.0",
@@ -33,7 +29,11 @@
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
     "mocha": "^7.1.1",
+    "nodemon": "^2.0.3",
+    "sequelize-cli": "^5.5.1",
     "sequelize-test-helpers": "^1.2.2",
-    "sinon": "^9.0.2"
+    "sinon": "^9.0.2",
+    "sinon-chai": "^3.5.0",
+    "sqlite3": "^4.1.1"
   }
 }
