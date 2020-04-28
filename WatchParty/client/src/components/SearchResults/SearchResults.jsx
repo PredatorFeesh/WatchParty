@@ -83,7 +83,7 @@ class SearchResults extends Component {
                                 <div className="movie-item-container" key={el.id}>
                                   <div className="img-container">
                                     <img
-                                      onError={(event) => { event.target.src = "/default.png"; }}
+                                      onError={(event) => { event.target.src = "/default.png"; }} // eslint-disable-line no-param-reassign
                                       src={`https://image.tmdb.org/t/p/w1280${el.poster_path}`}
                                       width="110px"
                                       height="190px"

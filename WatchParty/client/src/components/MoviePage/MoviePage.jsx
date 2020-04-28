@@ -33,7 +33,7 @@ class MoviePage extends React.Component {
         const response = JSON.parse(data);
         this.setState({ movieItem: response });
       },
-      (err) => console.log(err),
+      (err) => console.log(err), // eslint-disable-line no-console
     );
 
     theMovieDb.movies.getVideos(
@@ -44,7 +44,7 @@ class MoviePage extends React.Component {
           this.setState({ trailerKey: response.results[0].key });
         }
       },
-      (err) => console.log(err),
+      (err) => console.log(err), // eslint-disable-line no-console
     );
   }
 
@@ -55,7 +55,7 @@ class MoviePage extends React.Component {
         <div className="poster-container">
           <img
             data-testid="poster-img"
-            onError={(event) => { event.target.src = "/default.png"; }}
+            onError={(event) => { event.target.src = "/default.png"; }} // eslint-disable-line no-param-reassign
             src={`https://image.tmdb.org/t/p/w1280${movieItem.poster_path}`}
             width="260px"
             height="380px"
