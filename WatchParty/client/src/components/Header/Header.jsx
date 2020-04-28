@@ -47,7 +47,7 @@ class Header extends React.Component {
         state: { searchText: temp },
       });
     } else {
-      alert("Please enter a movie name!");
+      alert("Please enter a movie name!"); // eslint-disable-line no-alert
     }
   }
 
@@ -87,5 +87,9 @@ class Header extends React.Component {
     );
   }
 }
+
+Header.propTypes = {
+  history: PropTypes.instanceOf(Object).isRequired,
+};
 
 export default withRouter(Header);
