@@ -16,7 +16,7 @@ describe("rendered correctly with dummy movieItem and trailerKey", () => {
     params: { movieId: '1234' }, isExact: true, path: "", url: "",
   };
   const fetchMovieFn = jest.fn(match);
-  const container = shallow(<MoviePage match={match} movieId="1234" fetchMovieData={fetchMovieFn} />);
+  const container = shallow(<MoviePage match={match} fetchMovieData={fetchMovieFn} />);
   container.setState({ movieItem: testMovieItem, trailerKey: testTrailerKey });
   it("movie poster has correct link", () => {
     expect(container.find({ 'data-testid': 'poster-img' }).prop("src")).toEqual("https://image.tmdb.org/t/p/w1280/test.jpg");
