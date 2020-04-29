@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 import theMovieDb from 'themoviedb-javascript-library';
 
@@ -27,18 +28,16 @@ class SearchResults extends Component {
 
   componentDidUpdate(prevProps) {
     const prevSearch = prevProps.location.state.searchText;
-    const newSearch = this.props.location.state.searchText;
-    if (prevSearch !== newSearch) {
+    const newSearch = this.props;
+    if (prevSearch !== newSearch.location.state.searchText) {
       this.fetchMovies();
     }
   }
 
-  defaultPoster = (event) => { event.target.src = "/default.png"; }
-
   fetchMovies() {
-    const { searchText } = this.props.location.state;
+    const { location } = this.props;
     theMovieDb.search.getMovie(
-      { query: searchText },
+      { query: location.state.searchText },
       (data) => {
         const response = JSON.parse(data);
         this.setState({
@@ -51,7 +50,7 @@ class SearchResults extends Component {
   }
 
   render() {
-    const { searchText } = this.props.location.state;
+    const { location } = this.props;
     const { movieItems, isLoading, error } = this.state;
     return (
       <>
@@ -64,7 +63,7 @@ class SearchResults extends Component {
                 <div className="search-result-text">
                   <h1>
                     Search Results for: &quot;
-                    {searchText}
+                    {location.state.searchText}
                     &quot;
                     {' '}
                   </h1>
@@ -84,7 +83,7 @@ class SearchResults extends Component {
                                 <div className="movie-item-container" key={el.id}>
                                   <div className="img-container">
                                     <img
-                                      onError={this.defaultPoster}
+                                      onError={(event) => { event.target.src = "/default.png"; }} // eslint-disable-line no-param-reassign
                                       src={`https://image.tmdb.org/t/p/w1280${el.poster_path}`}
                                       width="110px"
                                       height="190px"
@@ -142,5 +141,13 @@ class SearchResults extends Component {
     );
   }
 }
+
+SearchResults.propTypes = {
+  location: PropTypes.shape({
+    state: PropTypes.shape({
+      searchText: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
+};
 
 export default SearchResults;

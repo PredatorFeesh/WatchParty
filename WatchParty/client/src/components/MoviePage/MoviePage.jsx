@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
 import theMovieDb from 'themoviedb-javascript-library';
 
@@ -18,35 +19,32 @@ class MoviePage extends React.Component {
     };
 
     this.fetchMovieData = this.fetchMovieData.bind(this);
-    this.defaultPoster = this.defaultPoster.bind(this);
   }
 
   componentDidMount() {
     this.fetchMovieData();
   }
 
-  defaultPoster = (event) => { event.target.src = "/default.png"; }
-
   fetchMovieData() {
-    const { params } = this.props.match;
+    const { match } = this.props;
     theMovieDb.movies.getById(
-      { id: params.movieId },
+      { id: match.params.movieId },
       (data) => {
         const response = JSON.parse(data);
         this.setState({ movieItem: response });
       },
-      (err) => console.log(err),
+      (err) => console.log(err), // eslint-disable-line no-console
     );
 
     theMovieDb.movies.getVideos(
-      { id: params.movieId },
+      { id: match.params.movieId },
       (data) => {
         const response = JSON.parse(data);
         if (response.results.length > 0) {
           this.setState({ trailerKey: response.results[0].key });
         }
       },
-      (err) => console.log(err),
+      (err) => console.log(err), // eslint-disable-line no-console
     );
   }
 
@@ -56,7 +54,8 @@ class MoviePage extends React.Component {
       <div className="info-container">
         <div className="poster-container">
           <img
-            onError={this.defaultPoster}
+            data-testid="poster-img"
+            onError={(event) => { event.target.src = "/default.png"; }} // eslint-disable-line no-param-reassign
             src={`https://image.tmdb.org/t/p/w1280${movieItem.poster_path}`}
             width="260px"
             height="380px"
@@ -70,7 +69,7 @@ class MoviePage extends React.Component {
                 movieItem.release_date !== ""
                 ?
                 (
-                  <div>
+                  <div data-testid="title-release-date-div">
                     {' '}
                     {movieItem.title}
                     {' '}
@@ -132,5 +131,13 @@ class MoviePage extends React.Component {
     );
   }
 }
+
+MoviePage.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      movieId: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
+};
 
 export default MoviePage;
