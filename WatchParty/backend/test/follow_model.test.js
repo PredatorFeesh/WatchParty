@@ -1,19 +1,18 @@
-const { chai, expect } = require('chai');
 const sinon = require('sinon');
+const chai = require('chai');
 chai.use(require('sinon-chai'));
-const expect = chai.expect;
 
+const { expect } = chai;
 const {
   sequelize,
   dataTypes,
   checkModelName,
-  checkUniqueIndex,
   checkPropertyExists,
 } = require('sequelize-test-helpers');
 
 const FollowModel = require('../models/follow');
 
-describe('models/follow', function () {
+describe('models/follow', () => {
   const Follow = FollowModel(sequelize, dataTypes);
   const follow = new Follow();
 

@@ -1,37 +1,36 @@
-const chai = require('chai')
-const sinon = require('sinon')
-chai.use(require('sinon-chai'))
-const expect = chai.expect
+const chai = require('chai');
+chai.use(require('sinon-chai'));
+
+const { expect } = chai;
 
 const {
   sequelize,
   dataTypes,
   checkModelName,
-  checkUniqueIndex,
-  checkPropertyExists
-} = require('sequelize-test-helpers')
+  checkPropertyExists,
+} = require('sequelize-test-helpers');
 
-const SublistModel = require('../models/sublist')
+const SublistModel = require('../models/sublist');
 
-describe('models/sublist', function() {
-  const Sublist = SublistModel(sequelize, dataTypes)
-  const sublist = new Sublist
+describe('models/sublist', () => {
+  const Sublist = SublistModel(sequelize, dataTypes);
+  const sublist = new Sublist();
 
-  checkModelName(Sublist)('Sublist')
+  checkModelName(Sublist)('Sublist');
   context('properties', () => {
-    ;['name', 'movie'].forEach(
-      checkPropertyExists(sublist)
-    )
-  })
+    ['name', 'movie'].forEach(
+      checkPropertyExists(sublist),
+    );
+  });
   context('associations', () => {
-    const Movie = 'some dummy movie'
+    const Movie = 'some dummy movie';
 
     before(() => {
-      Sublist.associate({ Movie })
-    })
+      Sublist.associate({ Movie });
+    });
 
     it('defined a belongsTo association with Movie', () => {
-      expect(Sublist.belongsTo).to.have.been.calledWith(Movie)
-    })
-  })
-})
+      expect(Sublist.belongsTo).to.have.been.calledWith(Movie);
+    });
+  });
+});
