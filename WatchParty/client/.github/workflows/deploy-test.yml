@@ -16,6 +16,8 @@ jobs:
       - name: Checks out repo
         if: github.repository == 'watchpartyappmain/watchparty-frontend-test'
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -31,7 +33,5 @@ jobs:
           HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
           HEROKU_APP_NAME: "watch-party-test-web-client"
         run: |
-          old_remote="https://github.com/PredatorFeesh/WatchParty.git"
-          git remote add old "${old_remote}"
-          git fetch old --unshallow
+          git fetch --all --unshallow
           git push https://heroku:${HEROKU_API_TOKEN}@git.heroku.com/${HEROKU_APP_NAME}.git HEAD:heroku-deploy
