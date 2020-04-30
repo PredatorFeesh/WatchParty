@@ -96,7 +96,7 @@ class SearchResults extends Component {
                                         {
                                           el.release_date !== undefined && el.release_date !== ""
                                             ? (
-                                              <div>
+                                              <div data-testid="movie-title-div">
                                                 {el.title}
                                                 {' '}
                                                 (
@@ -113,7 +113,7 @@ class SearchResults extends Component {
                                       </div>
                                     </Link>
                                     <div className="movie-desc">
-                                      <div>
+                                      <div data-testid="movie-desc-div">
                                         {el.overview}
                                       </div>
                                     </div>
