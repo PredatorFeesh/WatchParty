@@ -31,8 +31,8 @@ module.exports = (sequelize, DataTypes) => {
     return this.userid;
   };
   Movie.getSublistBelongsTo = function (movieid) {
-    const Sublist = this.sequelize.import('sublist.js');
-    return Sublist.findAll({ attributes: ['name'], where: { movie: movieid } });
+    const models = require('../models');
+    return models.Sublist.findAll({ attributes: ['name'], where: { movie: movieid } })
   };
   return Movie;
 };
