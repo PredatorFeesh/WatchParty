@@ -28,6 +28,8 @@ jobs:
     - name: Run install on backend and test
       run: |
         cd WatchParty/backend/
+        npm config set user 0
+        npm config set unsafe-perm true
         npm install
         npm run build --if-present
         npm run test
@@ -49,6 +51,8 @@ jobs:
     - name: Run client install and test
       run: |
         cd WatchParty/client/
+        npm config set user 0
+        npm config set unsafe-perm true
         npm install
         npm run build --if-present
         npm run test
@@ -70,6 +74,8 @@ jobs:
     - name: Run lint on frontend
       run: |
         cd WatchParty/client/
+        npm config set user 0
+        npm config set unsafe-perm true
         npm install
         npm run build --if-present
         npm run lint
@@ -91,6 +97,8 @@ jobs:
     - name: Run lint on backend
       run: |
         cd WatchParty/backend/
+        npm config set user 0
+        npm config set unsafe-perm true
         npm install
         npm run build --if-present
         npm run lint
