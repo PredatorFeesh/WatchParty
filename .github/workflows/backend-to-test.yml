@@ -20,6 +20,7 @@ jobs:
       run: |
         cd WatchParty/backend/
         npm install
+        npm run build --if-present
         npm run test
       env:
         CI: true
