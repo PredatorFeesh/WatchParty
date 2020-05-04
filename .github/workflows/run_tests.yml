@@ -21,14 +21,15 @@ jobs:
     - uses: actions/checkout@v2
       with:
         ref: ${{ github.ref }}
-    - name: Run test on backend
+    - name: Set up Node
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
     - name: Run install on backend and test
       run: |
         cd WatchParty/backend/
-        npm ci
+        npm install
+        npm run build --if-present
         npm run test
       env:
         CI: true
@@ -48,7 +49,8 @@ jobs:
     - name: Run client install and test
       run: |
         cd WatchParty/client/
-        npm ci
+        npm install
+        npm run build --if-present
         npm run test
       env:
         CI: true
@@ -61,14 +63,15 @@ jobs:
     - uses: actions/checkout@v2
       with:
         ref: ${{ github.ref }}
-    - name: Run lint on frontend
+    - name: Set up Node
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
     - name: Run lint on frontend
       run: |
         cd WatchParty/client/
-        npm ci
+        npm install
+        npm run build --if-present
         npm run lint
       env:
         CI: true
@@ -81,14 +84,15 @@ jobs:
     - uses: actions/checkout@v2
       with:
         ref: ${{ github.ref }}
-    - name: Run lint on backend
+    - name: Set up Node
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Run backend install and test
+    - name: Run lint on backend
       run: |
         cd WatchParty/backend/
-        npm ci
+        npm install
+        npm run build --if-present
         npm run lint
       env:
         CI: true
