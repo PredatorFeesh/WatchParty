@@ -25,6 +25,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - name: Set up sqlite
+      run: sudo apt-get install sqlite3
     - name: Run install on backend and test
       run: |
         cd WatchParty/backend/
@@ -91,6 +93,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - name: Set up sqlite
+      run: sudo apt-get install sqlite3
     - name: Run lint on backend
       run: |
         cd WatchParty/backend/
