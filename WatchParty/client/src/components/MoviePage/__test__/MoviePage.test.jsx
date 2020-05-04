@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 
 import MoviePage from '../MoviePage';
 
@@ -16,7 +16,7 @@ describe("rendered correctly with dummy movieItem and trailerKey", () => {
     params: { movieId: '1234' }, isExact: true, path: "", url: "",
   };
   const fetchMovieFn = jest.fn(match);
-  const container = shallow(<MoviePage match={match} fetchMovieData={fetchMovieFn} />);
+  const container = mount(<MoviePage match={match} movieId="1234" fetchMovieData={fetchMovieFn} />);
   container.setState({ movieItem: testMovieItem, trailerKey: testTrailerKey });
   it("movie poster has correct link", () => {
     expect(container.find({ 'data-testid': 'poster-img' }).prop("src")).toEqual("https://image.tmdb.org/t/p/w1280/test.jpg");
@@ -43,6 +43,6 @@ it("ensure fetchMovieData gets called on when component mounts", () => {
     params: { movieId: '1234' }, isExact: true, path: "", url: "",
   };
   const fetchMovieSpy = jest.spyOn(MoviePage.prototype, "fetchMovieData");
-  shallow(<MoviePage match={testMatch} movieId="1234" />);
+  mount(<MoviePage match={testMatch} movieId="1234" />);
   expect(fetchMovieSpy).toHaveBeenCalled();
 });
