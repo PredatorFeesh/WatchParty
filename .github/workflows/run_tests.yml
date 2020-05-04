@@ -31,7 +31,6 @@ jobs:
         npm config set user 0
         npm config set unsafe-perm true
         npm install
-        npm run build --if-present
         npm run test
       env:
         CI: true
@@ -54,7 +53,6 @@ jobs:
         npm config set user 0
         npm config set unsafe-perm true
         npm install
-        npm run build --if-present
         npm run test
       env:
         CI: true
@@ -77,7 +75,6 @@ jobs:
         npm config set user 0
         npm config set unsafe-perm true
         npm install
-        npm run build --if-present
         npm run lint
       env:
         CI: true
@@ -100,7 +97,6 @@ jobs:
         npm config set user 0
         npm config set unsafe-perm true
         npm install
-        npm run build --if-present
         npm run lint
       env:
         CI: true
