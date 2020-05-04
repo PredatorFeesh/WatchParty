@@ -21,5 +21,13 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'cascade',
     });
   };
+  Sublist.prototype.getMovies = function () { // eslint-disable-line func-names
+    return Sublist.findAll({
+      attribute: ['movie'],
+      where: {
+        name: this.name,
+      },
+    });
+  };
   return Sublist;
 };
