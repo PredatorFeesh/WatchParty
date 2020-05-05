@@ -33,17 +33,4 @@ describe('models/movie', () => {
       expect(Movie.belongsTo).to.have.been.calledWith(User);
     });
   });
-  context('Movie get user', () => {
-    const fakeMovie = models.Movie.build({
-      userid: 1,
-      tmdbid: 12345,
-      watchstatus: 'to-watch',
-    });
-    before(async () => {
-      fakeMovie.getUser();
-    });
-    it('got userid from movie', () => {
-      expect(fakeMovie.getUser()).to.equal(1);
-    });
-  });
 });
