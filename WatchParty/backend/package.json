@@ -7,8 +7,6 @@
     "build": "node ./bin/www",
     "lint": "eslint . --ext .js --ignore-pattern node_modules/",
     "test": "mocha test",
-    "testunit": "mocha test/unit/*",
-    "testintegration": "mocha test/integration/*",
     "test:watch": "mocha --watch",
     "test:watch:min": "mocha --watch --reporter min"
   },

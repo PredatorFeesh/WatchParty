@@ -8,8 +8,8 @@ const {
   checkModelName,
   checkPropertyExists,
 } = require('sequelize-test-helpers');
-const models = require('../../models/Sublist');
-const MovieModel = require('../../models/movie');
+const models = require('../models/Sublist');
+const MovieModel = require('../models/movie');
 
 describe('models/movie', () => {
   const Movie = MovieModel(sequelize, dataTypes);

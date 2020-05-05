@@ -6,7 +6,7 @@ const {
   checkPropertyExists,
 } = require('sequelize-test-helpers');
 
-const UserModel = require('../../models/user');
+const UserModel = require('../models/user');
 
 describe('models/user', () => {
   const User = UserModel(sequelize, dataTypes);
