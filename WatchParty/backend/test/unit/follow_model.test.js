@@ -10,7 +10,7 @@ const {
   checkPropertyExists,
 } = require('sequelize-test-helpers');
 
-const FollowModel = require('../models/follow');
+const FollowModel = require('../../models/follow');
 
 describe('models/follow', () => {
   const Follow = FollowModel(sequelize, dataTypes);

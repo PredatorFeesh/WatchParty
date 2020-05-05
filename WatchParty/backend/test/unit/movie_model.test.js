@@ -2,15 +2,14 @@ const chai = require('chai');
 chai.use(require('sinon-chai'));
 
 const { expect } = chai;
-
 const {
   sequelize,
   dataTypes,
   checkModelName,
   checkPropertyExists,
 } = require('sequelize-test-helpers');
-
-const MovieModel = require('../models/movie');
+const models = require('../../models/Sublist');
+const MovieModel = require('../../models/movie');
 
 describe('models/movie', () => {
   const Movie = MovieModel(sequelize, dataTypes);
@@ -31,6 +30,19 @@ describe('models/movie', () => {
 
     it('defined a belongsTo association with User', () => {
       expect(Movie.belongsTo).to.have.been.calledWith(User);
+    });
+  });
+  context('Movie get user', () => {
+    const fakeMovie = models.Movie.build({
+      userid: 1,
+      tmdbid: 12345,
+      watchstatus: 'to-watch',
+    });
+    before(async () => {
+      fakeMovie.getUser();
+    });
+    it('got userid from movie', () => {
+      expect(fakeMovie.getUser()).to.equal(1);
     });
   });
 });
