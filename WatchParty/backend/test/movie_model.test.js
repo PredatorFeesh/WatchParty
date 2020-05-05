@@ -2,13 +2,14 @@ const chai = require('chai');
 chai.use(require('sinon-chai'));
 
 const { expect } = chai;
+
 const {
   sequelize,
   dataTypes,
   checkModelName,
   checkPropertyExists,
 } = require('sequelize-test-helpers');
-const models = require('../models/Sublist');
+
 const MovieModel = require('../models/movie');
 
 describe('models/movie', () => {
