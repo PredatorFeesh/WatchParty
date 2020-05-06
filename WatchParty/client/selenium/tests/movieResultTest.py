@@ -6,7 +6,7 @@ class ResolutionTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.driver = webdriver.Chrome(executable_path='./chromedriver')
+        cls.driver = webdriver.Chrome()
         cls.driver.implicitly_wait(10)
         cls.driver.set_window_size(320, 480)
 

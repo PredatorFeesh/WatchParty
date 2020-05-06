@@ -1,16 +1,17 @@
-To run selenium test, install the following:
-Python3 
-Selenium 
+# Selenium Tests
 
-Then download the web driver you are going to use to automate the test; in the original script I used chrome."https://www.selenium.dev/downloads/" Scroll down to "Platforms Supported by Selenium". Make sure the browser version matches the one you currently use. 
+## Requirements
 
-In line 9 of the script change the executable path to the web driver you have downloaded. 
+To run selenium test, you will need `python3` and `pip` installed.
 
-Go the WatchParty/WatchParty/Client and run npm start
+## Setting Up
 
-Ready to Run test: 
-Head to the directory where test is installed and run the following command
+Make sure you are in `WatchParty/client/selenium`.
 
-Python3 -m unittest movieResultTest.py
+In order to get set up, you will need to run `python3 setup.py`
 
-DONE :) 
+## Executing the tests
+
+Now you are ready to run the tests via `python3 -m unittest movieResultTest.py`
+
+DONE :)
