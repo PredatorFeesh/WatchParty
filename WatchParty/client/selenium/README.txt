@@ -12,6 +12,6 @@ In order to get set up, you will need to run `python3 setup.py`
 
 ## Executing the tests
 
-Now you are ready to run the tests via `python3 -m unittest movieResultTest.py`
+Now you are ready to run the the tests on movieResults via `python3 -m unittest tests/movieResultTest.py`
 
 DONE :)

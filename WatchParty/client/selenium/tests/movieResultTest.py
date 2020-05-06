@@ -1,4 +1,5 @@
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 import unittest
 import time
 
@@ -6,7 +7,7 @@ class ResolutionTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.driver = webdriver.Chrome()
+        cls.driver = webdriver.Chrome(ChromeDriverManager().install())
         cls.driver.implicitly_wait(10)
         cls.driver.set_window_size(320, 480)
 
