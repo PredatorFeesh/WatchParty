@@ -7,7 +7,9 @@ class ResolutionTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.driver = webdriver.Chrome(ChromeDriverManager().install())
+        options = webdriver.ChromeOptions()
+        options.add_argument('--headless')
+        cls.driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
         cls.driver.implicitly_wait(10)
         cls.driver.set_window_size(320, 480)
 
