@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
     return this.userid;
   };
   Movie.prototype.getSublistBelongsTo = function () {
-    const Sublist = require('../models').Sublist;
+    const Sublist = sequelize.import('sublist');
     return Sublist.findAll({ attributes: ['name'], where: { movie: this.id } });
   };
   return Movie;
