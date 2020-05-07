@@ -25,14 +25,17 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'cascade',
     });
   };
-  Follow.getFollowersOf = function(userid) {
-    return Follow.findAll({attributes:['follower'],
-					where:{followee:userid}});
+  Follow.getFollowersOf = function (userid) { // eslint-disable-line func-names
+    return Follow.findAll({
+      attributes: ['follower'],
+      where: { followee: userid },
+    });
   };
-  
-   Follow.getFolloweesOf = function(userid) {
-    return Follow.findAll({attributes:['followee'],
-					where:{follower:userid}});
+  Follow.getFolloweesOf = function (userid) { // eslint-disable-line func-names
+    return Follow.findAll({
+      attributes: ['followee'],
+      where: { follower: userid },
+    });
   };
   return Follow;
 };
