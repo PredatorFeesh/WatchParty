@@ -6,7 +6,13 @@ module.exports = (sequelize, DataTypes) => {
       unique: 'namemovie',
       validate: { notNull: true },
     },
-    movie: {
+    movieID: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: 'namemovie',
+      validate: { notNull: true },
+    },
+    userID: {
       type: DataTypes.INTEGER,
       allowNull: false,
       unique: 'namemovie',
@@ -15,9 +21,14 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     freezeTableName: true,
   });
+  // Associations
   Sublist.associate = (models) => {
     Sublist.belongsTo(models.Movie, {
-      foreignKey: 'movie',
+      foreignKey: 'movieID',
+      onDelete: 'cascade',
+    });
+    Sublist.belongsTo(models.User, {
+      foreignKey: 'userID',
       onDelete: 'cascade',
     });
   };
