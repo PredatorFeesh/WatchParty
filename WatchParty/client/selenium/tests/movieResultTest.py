@@ -23,24 +23,24 @@ class ResolutionTest(unittest.TestCase):
     def test_search_bar(self):
         self.driver.get("http://localhost:3000/")
         self.driver.find_element_by_xpath('//span[@class = "navbar-toggler-icon"]').click()
-        self.driver.find_element_by_xpath('//input[@placeholder = "Search movies or users"]').send_keys("Batman")
-        time.sleep(1)
+        self.driver.find_element_by_xpath('//input[@data-testid = "search-field"]').send_keys("Batman")
 
 
     #This test is to make sure a user can search for a movie on a 500px or below width resolution
     def test_search(self):
         self.driver.get("http://localhost:3000/")
         self.driver.find_element_by_xpath('//span[@class = "navbar-toggler-icon"]').click()
-        self.driver.find_element_by_xpath('//input[@placeholder = "Search movies or users"]').send_keys("Batman")
+        self.driver.find_element_by_xpath('//input[@data-testid = "search-field"]').send_keys("Batman")
         self.driver.implicitly_wait(10)
         self.driver.find_element_by_xpath('//button[@class = "btn btn-outline-info"]').click()
+        time.sleep(1)
 
 
     #This test is to make sure a user click on a movie title and learn more
     def test_movie_link(self):
         self.driver.get("http://localhost:3000/")
         self.driver.find_element_by_xpath('//span[@class = "navbar-toggler-icon"]').click()
-        self.driver.find_element_by_xpath('//input[@placeholder = "Search movies or users"]').send_keys("Batman")
+        self.driver.find_element_by_xpath('//input[@data-testid = "search-field"]').send_keys("Batman")
         self.driver.find_element_by_xpath('//button[@class = "btn btn-outline-info"]').click()
         self.driver.find_element_by_xpath('//div[@class = "movie-title"]').click()
         time.sleep(1)
