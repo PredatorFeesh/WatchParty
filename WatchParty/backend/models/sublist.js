@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
   // Custom methods
-  Sublist.prototype.getMovies = function () {
+  Sublist.prototype.getMovies = function () { // eslint-disable-line func-names
     return Sublist.findAll({
       include: [{
         model: Movie,
@@ -45,8 +45,8 @@ module.exports = (sequelize, DataTypes) => {
         userID: this.userID,
         name: this.name,
       },
-    })
-  }
+    });
+  };
 
   return Sublist;
 };
