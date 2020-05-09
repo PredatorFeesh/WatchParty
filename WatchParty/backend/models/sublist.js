@@ -1,4 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
+  const Movie = sequelize.import('movie');
   const Sublist = sequelize.define("Sublist", {
     name: {
       type: DataTypes.STRING(32),
@@ -32,5 +33,20 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'cascade',
     });
   };
+  // Custom methods
+  Sublist.prototype.getMovies = function () {
+    return Sublist.findAll({
+      include: [{
+        model: Movie,
+        attributes: ['tmdbid'],
+      }],
+      attributes: ['id'],
+      where: {
+        userID: this.userID,
+        name: this.name,
+      },
+    })
+  }
+
   return Sublist;
 };
