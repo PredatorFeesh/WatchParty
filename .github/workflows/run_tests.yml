@@ -25,15 +25,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Set up g++
-      run: sudo apt-get install g++ build-essential
-    - name: Set up sqlite
-      run: sudo apt-get install sqlite3 libsqlite3-dev
     - name: Run install on backend and test
       run: |
         cd WatchParty/backend/
-        npm config set user 0
-        npm config set unsafe-perm true
         npm install
         npm run test
       env:
@@ -95,15 +89,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Set up g++
-      run: sudo apt-get install g++ build-essential
-    - name: Set up sqlite
-      run: sudo apt-get install sqlite3 libsqlite3-dev
     - name: Run lint on backend
       run: |
         cd WatchParty/backend/
-        npm config set user 0
-        npm config set unsafe-perm true
         npm install
         npm run lint
       env:
