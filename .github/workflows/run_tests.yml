@@ -13,7 +13,7 @@ on:
 
 jobs:
   test_backend:
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest]
     strategy:
       matrix:
         node-version: [13.x]
@@ -26,7 +26,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: Set up sqlite
-      run: sudo apt-get install sqlite3
+      run: sudo apt-get install sqlite3 libsqlite3-dev
     - name: Run install on backend and test
       run: |
         cd WatchParty/backend/
@@ -94,7 +94,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: Set up sqlite
-      run: sudo apt-get install sqlite3
+      run: sudo apt-get install sqlite3 libsqlite3-dev
     - name: Run lint on backend
       run: |
         cd WatchParty/backend/
