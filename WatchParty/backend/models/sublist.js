@@ -1,5 +1,4 @@
 module.exports = (sequelize, DataTypes) => {
-  const Movie = sequelize.import('movie');
   const Sublist = sequelize.define("Sublist", {
     name: {
       type: DataTypes.STRING(32),
@@ -35,6 +34,7 @@ module.exports = (sequelize, DataTypes) => {
   };
   // Custom methods
   Sublist.prototype.getMovies = function () { // eslint-disable-line func-names
+    const Movie = sequelize.import('movie');
     return Sublist.findAll({
       include: [{
         model: Movie,

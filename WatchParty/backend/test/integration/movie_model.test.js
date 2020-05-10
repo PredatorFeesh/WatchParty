@@ -7,8 +7,8 @@ const models = require('../../models');
 describe('models/movie', () => {
   context('Part of a Sublist', () => {
     let result;
-    before(function* () { // eslint-disable-line func-names
-      yield new Promise((resolve) => {
+    before(() => { // eslint-disable-line func-names
+      return new Promise((resolve) => {
         setTimeout(async () => {
           await models.User.destroy({ where: { email: 'integrationtestmovieemailone@gmail.com' } });
           const userobject = await models.User.create({
@@ -22,7 +22,7 @@ describe('models/movie', () => {
             tmdbid: 12345,
             watchstate: 'to-watch',
           });
-          await models.Sublist.create({ name: 'TestSublist', movie: movieobject.id });
+          await models.Sublist.create({ name: 'TestSublist', movieID: movieobject.id, userID: userobject.id  });
           result = await movieobject.getSublistBelongsTo();
           resolve();
         }, 200);
@@ -35,8 +35,8 @@ describe('models/movie', () => {
   });
   context('Not part of a Sublist', () => {
     let result;
-    before(function* () { // eslint-disable-line func-names
-      yield new Promise((resolve) => {
+    before(() => { // eslint-disable-line func-names
+      return new Promise((resolve) => {
         setTimeout(async () => {
           await models.User.destroy({ where: { email: 'integrationtestmovieemailtwo@gmail.com' } });
           const userobject = await models.User.create({

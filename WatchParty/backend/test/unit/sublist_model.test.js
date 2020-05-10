@@ -18,7 +18,7 @@ describe('models/sublist', () => {
 
   checkModelName(Sublist)('Sublist');
   context('properties', () => {
-    ['name', 'movie'].forEach(
+    ['name', 'movieID'].forEach(
       checkPropertyExists(sublist),
     );
   });
