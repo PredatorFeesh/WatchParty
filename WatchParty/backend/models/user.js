@@ -24,5 +24,19 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     freezeTableName: true,
   });
+  // Associations
+  User.associate = (models) => {
+    User.belongsToMany(models.User, {
+      foreignKey: 'followeeId',
+      as: 'followers',
+      through: 'UserFollower',
+    });
+    User.belongsToMany(models.User, {
+      foreignKey: 'followerId',
+      as: 'following',
+      through: 'UserFollower',
+    });
+  };
+  // Custom methods
   return User;
 };
