@@ -10,7 +10,7 @@ const {
   checkPropertyExists,
 } = require('sequelize-test-helpers');
 
-const MovieModel = require('../models/movie');
+const MovieModel = require('../../models/movie');
 
 describe('models/movie', () => {
   const Movie = MovieModel(sequelize, dataTypes);

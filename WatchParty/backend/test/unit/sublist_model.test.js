@@ -10,7 +10,7 @@ const {
   checkPropertyExists,
 } = require('sequelize-test-helpers');
 
-const SublistModel = require('../models/sublist');
+const SublistModel = require('../../models/sublist');
 
 describe('models/sublist', () => {
   const Sublist = SublistModel(sequelize, dataTypes);
