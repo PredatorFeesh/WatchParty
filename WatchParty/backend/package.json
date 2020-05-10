@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "build": "node ./bin/www",
+    "build": "node ./bin/www --max-old-space-size=512",
     "lint": "eslint . --ext .js --ignore-pattern node_modules/",
     "test": "mocha test/*",
     "test:watch": "mocha --watch",
