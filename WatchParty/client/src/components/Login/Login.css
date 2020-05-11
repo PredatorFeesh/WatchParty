@@ -1,0 +1,25 @@
+.welcome-container {
+    margin: auto;
+    width: max-content;
+
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.navbar-brand {
+    font-family: 'Lobster', cursive;
+    font-size: 3em;
+    color: black;
+}
+
+.login-container {
+    width: 500px;
+    margin: auto;
+    padding: 10px;
+}
+
+.make-account-container {
+    margin-top: 10px;
+    text-align: center;
+}

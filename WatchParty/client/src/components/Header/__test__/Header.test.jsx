@@ -5,7 +5,7 @@ import { mount } from 'enzyme';
 import Header from '../Header';
 
 describe("search field and search button rendered properly", () => {
-  const container = mount(<Router><Header /></Router>);
+  const container = mount(<Router><Header isLoggedIn={false} /></Router>);
   it("rendered search field", () => {
     expect(container.find({ 'data-testid': 'search-field' })).toBeTruthy();
   });
@@ -21,7 +21,7 @@ describe("search field and search button rendered properly", () => {
 describe("functions get called", () => {
   it("empty search calls window.alert box", () => {
     window.alert = jest.fn();
-    const container = mount(<Router><Header /></Router>);
+    const container = mount(<Router><Header isLoggedIn={false} /></Router>);
     container.find({ 'data-testid': 'search-button' }).at(1).simulate("click");
     expect(window.alert).toHaveBeenCalled();
   });
