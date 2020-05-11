@@ -9,6 +9,8 @@ class Register extends React.Component {
   constructor() {
     super();
     this.state = {
+      registerFirst: "",
+      registerLast: "",
       registerEmail: "",
       registerPassword: "",
       registerPasswordConfirm: "",
@@ -25,9 +27,11 @@ class Register extends React.Component {
 
   handleRegister(event) {
     event.preventDefault();
-    const { registerEmail, registerPassword, registerPasswordConfirm } = this.state;
-    if (registerEmail && registerPassword && registerPasswordConfirm &&
-        registerPassword === registerPasswordConfirm) {
+    const {
+      registerFirst, registerLast, registerEmail, registerPassword, registerPasswordConfirm,
+    } = this.state;
+    if (registerFirst && registerLast && registerEmail && registerPassword &&
+        registerPasswordConfirm && registerPassword === registerPasswordConfirm) {
       /* MAKE CREATE ACCOUNT API CALL IN BACKEND */
       alert("Account created. Redirecting"); // eslint-disable-line no-alert
       const { history } = this.props;
@@ -48,7 +52,15 @@ class Register extends React.Component {
         <div className="login-container">
           <Form onSubmit={this.handleRegister}>
             <Form.Group>
-              <Form.Label>Email address</Form.Label>
+              <Form.Label>First Name</Form.Label>
+              <Form.Control name="registerFirst" type="text" placeholder="First" onChange={this.handleChange} />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Last Name</Form.Label>
+              <Form.Control name="registerLast" type="text" placeholder="Last" onChange={this.handleChange} />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Email Address</Form.Label>
               <Form.Control name="registerEmail" type="email" placeholder="Enter email" onChange={this.handleChange} />
             </Form.Group>
             <Form.Group>
