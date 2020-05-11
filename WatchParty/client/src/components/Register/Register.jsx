@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Button, Form, Navbar,
 } from 'react-bootstrap';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 class Register extends React.Component {

@@ -11,6 +11,7 @@ import MoviePage from './components/MoviePage/MoviePage';
 import Login from './components/Login/Login';
 import Logout from './components/Logout/Logout';
 import Register from './components/Register/Register';
+import Profile from './components/Profile/Profile';
 
 library.add(
   faUserCircle,
@@ -46,7 +47,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { isLoggedIn } = this.state;
+    const { isLoggedIn, userId } = this.state;
     return (
       <>
         <Router>
@@ -58,6 +59,7 @@ class App extends React.Component {
             <Route exact path="/login" component={() => <Login LogIn={this.handleLogin} />} />
             <Route exact path="/logout" component={() => <Logout LogOut={this.handleLogout} />} />
             <Route exact path="/register" component={Register} />
+            <Route exact path="/profile" component={() => <Profile userID={userId} />} />
           </Switch>
         </Router>
       </>

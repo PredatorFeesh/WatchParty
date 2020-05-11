@@ -62,7 +62,7 @@ class Login extends React.Component {
         </div>
         <div className="make-account-container">
           <div>
-            Don't have an account?
+            Don&apos;t have an account?
           </div>
           <Link to="/register">
             Sign Up
