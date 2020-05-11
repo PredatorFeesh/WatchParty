@@ -10,6 +10,7 @@ import LandingPage from './components/ActivityFeed/ActivityFeed';
 import MoviePage from './components/MoviePage/MoviePage';
 import Login from './components/Login/Login';
 import Logout from './components/Logout/Logout';
+import Register from './components/Register/Register';
 
 library.add(
   faUserCircle,
@@ -22,11 +23,11 @@ class App extends React.Component {
       isLoggedIn: false,
       userId: "",
     };
-    this.handleLogOut = this.handleLogOut.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
   }
 
-  handleLogOut() {
+  handleLogout() {
     this.setState(
       {
         isLoggedIn: false,
@@ -55,7 +56,8 @@ class App extends React.Component {
             <Route exact path="/results" component={SearchResults} />
             <Route exact path="/results/:movieId" component={MoviePage} />
             <Route exact path="/login" component={() => <Login LogIn={this.handleLogin} />} />
-            <Route exact path="/logout" component={() => <Logout LogOut={this.handleLogOut} />} />
+            <Route exact path="/logout" component={() => <Logout LogOut={this.handleLogout} />} />
+            <Route exact path="/register" component={Register} />
           </Switch>
         </Router>
       </>

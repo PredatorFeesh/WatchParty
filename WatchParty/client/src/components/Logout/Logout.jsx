@@ -25,7 +25,7 @@ class Logout extends React.Component {
         </div>
         <div className="logout-btn-container">
           <Button variant="danger" onClick={this.handleLogoutClick}>
-            LogOut
+            Log Out
           </Button>
         </div>
       </>

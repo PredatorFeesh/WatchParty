@@ -28,6 +28,7 @@ class Login extends React.Component {
     event.preventDefault();
     const { loginEmail, loginPassword } = this.state;
     if (loginEmail && loginPassword) {
+      /* MAKE API CALL IN BACKEND TO LOGIN */
       const { history, LogIn } = this.props;
       LogIn("some userid");
       history.push({ pathname: "/" });
@@ -61,7 +62,7 @@ class Login extends React.Component {
         </div>
         <div className="make-account-container">
           <div>
-            Dont have an account?
+            Don't have an account?
           </div>
           <Link to="/register">
             Sign Up
