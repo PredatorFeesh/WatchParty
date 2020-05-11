@@ -10,7 +10,7 @@ class Profile extends React.Component {
   fetchToWatch() {
     /* MAKE BACKENDD API CALL TO FETCH TOWATCH LIST */
     const { userID } = this.props;
-    console.log(userID);
+    console.log(userID); // eslint-disable-line no-console
   }
 
   render() {
