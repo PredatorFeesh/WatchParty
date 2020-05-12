@@ -117,26 +117,26 @@ router.post('/logout', (req, res) => {
 
 // POST /api/ping
 router.post('/ping', (req, res) => {
-	// ping with some common keyword + current datetime, adding some form of security
-	// normally we'd store this data in a sep file or location but kinda pressed on time
-	const secretWord = 'dodo';
-	// wonky way to give someone approx 100 seconds
-	// bad if it's the end of the "current 100 seconds"
-	const timestamp = Math.floor(Date.now() / 100000);
-	const combination = secretWord + timestamp.toString();
-	const token = req.body.token;
-	if (!token) {
-		return res.status(400).send({ message: 'Bad Request' });
-	}
-	const hashTimestamp = async () => {
-		const hash = await bcrypt.hash(combination, 1);
-		const match = await bcrypt.compare(token, hash);
-		if (match) {
-			return res.status(200).send({ message: 'Pong' });
-		} else {
-			return res.status(401).send({ message: 'Unauthorized' });
-		}
-	}
+  // ping with some common keyword + current datetime, adding some form of security
+  // normally we'd store this data in a sep file or location but kinda pressed on time
+  const secretWord = 'dodo';
+  // wonky way to give someone approx 100 seconds
+  // bad if it's the end of the "current 100 seconds"
+  const timestamp = Math.floor(Date.now() / 100000);
+  const combination = secretWord + timestamp.toString();
+  const token = req.body.token;
+  if (!token) {
+    return res.status(400).send({ message: 'Bad Request' });
+  }
+  const hashTimestamp = async () => {
+    const hash = await bcrypt.hash(combination, 1);
+    const match = await bcrypt.compare(token, hash);
+    if (match) {
+      return res.status(200).send({ message: 'Pong' });
+    } else {
+      return res.status(401).send({ message: 'Unauthorized' });
+    }
+  }
 	
 });
 
