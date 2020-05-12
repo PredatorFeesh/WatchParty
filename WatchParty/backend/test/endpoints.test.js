@@ -21,7 +21,7 @@ describe('Server', () => {
     chai
       .request(app)
       .post('/api/ping')
-      .send({ message: 'ping' )
+      .send({ message: 'ping' })
       .end((err, res) => {
         expect(res).to.have.status(400);
 		done();

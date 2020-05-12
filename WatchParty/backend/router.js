@@ -116,7 +116,7 @@ router.post('/logout', (req, res) => {
 });
 
 // POST /api/ping
-router.post('/ping', (req, res) => {
+router.post('/ping', async (req, res) => {
   // ping with some common keyword + current datetime, adding some form of security
   // normally we'd store this data in a sep file or location but kinda pressed on time
   const secretWord = 'dodo';
@@ -125,6 +125,9 @@ router.post('/ping', (req, res) => {
   const timestamp = Math.floor(Date.now() / 100000);
   const combination = secretWord + timestamp.toString();
   const { token } = req.body;
+  if (!token) {
+    return res.status(400).send({ message: 'Bad Request' });
+  }
   const hashTimestamp = async () => {
     const hash = await bcrypt.hash(combination, 1);
     const match = await bcrypt.compare(token, hash);
@@ -133,7 +136,8 @@ router.post('/ping', (req, res) => {
     }
     return res.status(401).send({ message: 'Unauthorized' });
   }
-  return res.status(400).send({ message: 'Bad Request' });
+  return hashTimestamp();
+  
 });
 
 module.exports = router;
