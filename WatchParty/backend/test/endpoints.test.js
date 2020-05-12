@@ -1,6 +1,5 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const bcrypt = require('bcrypt');
 const app = require('../app');
 
 const { expect } = chai;
