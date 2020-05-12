@@ -32,12 +32,11 @@ describe('Server', () => {
     const secretWord = 'dodo';
     const timestamp = Math.floor(Date.now() / 100000);
     const combination = secretWord + timestamp.toString();
-    const hashTimestamp = async () => {
-      const hash = await bcrypt.hash(combination, 1);
+    const hashTimestamp = () => {
       chai
         .request(app)
         .post('/api/ping')
-        .send({ message: 'ping', token: hash })
+        .send({ message: 'ping', token: combination })
         .end((err, res) => {
           expect(res).to.have.status(200);
           done();
