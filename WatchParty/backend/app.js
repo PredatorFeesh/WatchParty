@@ -30,6 +30,7 @@ app.use(session({
   // should be set to false
   resave: false,
   proxy: true, // if you do SSL outside of node.
+  saveUninitialized: true,
 }));
 
 app.use('/api', router);
