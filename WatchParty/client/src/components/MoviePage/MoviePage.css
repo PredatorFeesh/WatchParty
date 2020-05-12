@@ -52,3 +52,86 @@
 .to-watch-btn{
    margin-left: 10px;
 }
+
+
+@media all and (max-width: 500px){
+
+    .info-container {
+        margin: auto;
+        width : 95%;
+        margin-top: 5px;
+        display: flex;
+        height: min-content;
+    }
+    
+    .img{
+        width: 10px;
+        height: min-content; 
+    }
+
+    .poster-container{
+        width: min-content;
+        height: min-content;
+        border: 1px solid black;
+        margin-top: 2%;
+    }
+    
+    .movie-details-container{
+        width: 100%;
+        height: auto;
+        margin-left: 5px;
+        padding-left: 5px;
+    }
+    
+    .title-section{
+        width: 100%;
+        height: min-content;
+        font-size: 150%;
+    }
+    
+    .overview {
+        width: 100%;
+        font-size: medium;
+        margin-top: 2px;
+        font-style: italic;
+    }
+    
+    .description{
+        margin-top: 0px;
+        width: 90%;
+        height: 30%;
+        overflow: scroll;
+        border: 1px solid grey;
+    }
+    
+    .btn-container{
+        margin-top: 10px;
+        width: 100%;
+        height: fit-content;
+        display: flex;
+    }
+    
+    .trailer-btn{
+        margin-top: 10px;
+        margin-left: 5px;
+        height: fit-content;
+    }
+    
+    .to-watch-btn{
+       margin-top: 10px;
+       margin-left:5px;
+       height: fit-content;
+       width: fit-content;
+    }
+    
+    .read-more-btn{
+        margin-top: 10px;
+        margin-left: -30px;
+        height: fit-content;
+    }
+    
+    .posters{
+        width: 100px;
+        height: 150px;
+    }
+}

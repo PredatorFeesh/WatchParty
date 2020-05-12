@@ -53,6 +53,7 @@ class MoviePage extends React.Component {
     return (
       <div className="info-container">
         <div className="poster-container">
+<<<<<<< Updated upstream
           <img
             data-testid="poster-img"
             onError={(event) => { event.target.src = "/default.png"; }} // eslint-disable-line no-param-reassign
@@ -61,6 +62,19 @@ class MoviePage extends React.Component {
             height="380px"
             alt="movie poster"
           />
+=======
+          
+            <img
+              className = "posters"
+              data-testid="poster-img"
+              onError={this.defaultPoster}
+              src={`https://image.tmdb.org/t/p/w1280${movieItem.poster_path}`}
+              width="260px"
+              height="380px"
+              
+              alt="movie poster"
+            />
+>>>>>>> Stashed changes
         </div>
         <div className="movie-details-container">
           <div className="title-section">
