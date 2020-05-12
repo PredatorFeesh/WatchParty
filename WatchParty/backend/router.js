@@ -124,20 +124,16 @@ router.post('/ping', (req, res) => {
   // bad if it's the end of the "current 100 seconds"
   const timestamp = Math.floor(Date.now() / 100000);
   const combination = secretWord + timestamp.toString();
-  const token = req.body.token;
-  if (!token) {
-    return res.status(400).send({ message: 'Bad Request' });
-  }
+  const { token } = req.body;
   const hashTimestamp = async () => {
     const hash = await bcrypt.hash(combination, 1);
     const match = await bcrypt.compare(token, hash);
     if (match) {
       return res.status(200).send({ message: 'Pong' });
-    } else {
-      return res.status(401).send({ message: 'Unauthorized' });
     }
+    return res.status(401).send({ message: 'Unauthorized' });
   }
-	
+  return res.status(400).send({ message: 'Bad Request' });
 });
 
 module.exports = router;
