@@ -13,7 +13,7 @@ describe('Server', () => {
       .send({ message: 'ping', token: 'fake' })
       .end((err, res) => {
         expect(res).to.have.status(401);
-      done();
+        done();
       });
   });
 
@@ -31,7 +31,7 @@ describe('Server', () => {
   it('pongs on correct input (status 200)', (done) => {
     const secretWord = 'dodo';
     const timestamp = Math.floor(Date.now() / 100000);
-    const combination = secretWord + timestamp.toString();  
+    const combination = secretWord + timestamp.toString();
     const hashTimestamp = async () => {
       const hash = await bcrypt.hash(combination, 1);
       chai
@@ -42,7 +42,7 @@ describe('Server', () => {
           expect(res).to.have.status(200);
           done();
         });
-    }
+    };
     hashTimestamp();
   });
 });
