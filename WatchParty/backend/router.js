@@ -135,9 +135,8 @@ router.post('/ping', async (req, res) => {
       return res.status(200).send({ message: 'Pong' });
     }
     return res.status(401).send({ message: 'Unauthorized' });
-  }
+  };
   return hashTimestamp();
-  
 });
 
 module.exports = router;

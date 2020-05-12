@@ -13,10 +13,10 @@ describe('Server', () => {
       .send({ message: 'ping', token: 'fake' })
       .end((err, res) => {
         expect(res).to.have.status(401);
-		done();
+      done();
       });
   });
-  
+
   it('results in error on no input (error 400)', (done) => {
     chai
       .request(app)
@@ -24,7 +24,7 @@ describe('Server', () => {
       .send({ message: 'ping' })
       .end((err, res) => {
         expect(res).to.have.status(400);
-		done();
+        done();
       });
   });
 
@@ -43,10 +43,6 @@ describe('Server', () => {
           done();
         });
     }
-	
-    
+    hashTimestamp();
   });
-  
-  // add right input, and no input
-  
 });
