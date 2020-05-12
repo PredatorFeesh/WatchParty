@@ -53,7 +53,7 @@ class MoviePage extends React.Component {
     return (
       <div className="info-container">
         <div className="poster-container">
-            <img
+          <img
             className="posters"
             data-testid="poster-img"
             onError={this.defaultPoster}
@@ -61,7 +61,7 @@ class MoviePage extends React.Component {
             width="260px"
             height="380px"
             alt="movie poster"
-            />
+          />
         </div>
         <div className="movie-details-container">
           <div className="title-section">
