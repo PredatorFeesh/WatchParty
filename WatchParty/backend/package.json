@@ -9,7 +9,7 @@
     "start": "nodemon ./bin/www",
     "build": "node ./bin/www --max-old-space-size=512",
     "lint": "eslint . --ext .js --ignore-pattern node_modules/",
-    "test": "mocha test/*",
+    "test": "mocha test/* --timeout 50000",
     "test:coverage": "nyc mocha test/*",
     "testunit": "mocha test/unit/*",
     "testintegration": "mocha test/integration/*",
