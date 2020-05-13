@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // Sessions
-app.use(session({
+/***app.use(session({
   cookie: { maxAge: 60000 },
   secret: config.session_secret,
   store: new SequelizeStore({
@@ -30,7 +30,7 @@ app.use(session({
   // should be set to false
   resave: false,
   proxy: true, // if you do SSL outside of node.
-}));
+}));***/
 
 app.use('/api', router);
 
