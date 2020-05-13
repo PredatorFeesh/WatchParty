@@ -45,6 +45,9 @@ jobs:
         DB_NAME: ${{ secrets.DB_NAME }}
         DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
         DB_USERNAME: ${{ secrets.DB_USERNAME }}
+    - name: Get Code Coverage
+      run: npm run test:coverage
+
   test_frontend:
     runs-on: [ubuntu-latest]
     strategy:
@@ -65,6 +68,8 @@ jobs:
         npm run test
       env:
         CI: true
+    - name: Get Code Coverage
+    run: npm run test:coverage
   lint_frontend:
     runs-on: [ubuntu-latest]
     strategy:
