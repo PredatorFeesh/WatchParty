@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import {
   Nav,
   Navbar,
@@ -60,10 +60,13 @@ class Header extends React.Component {
 
   render() {
     const { searchText } = this.state;
+    const { isLoggedIn } = this.props;
     return (
       <>
         <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
-          <Navbar.Brand onClick={this.handleRoute("/")} href="/">WatchParty</Navbar.Brand>
+          <Link to="/">
+            <Navbar.Brand>WatchParty</Navbar.Brand>
+          </Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
@@ -78,7 +81,23 @@ class Header extends React.Component {
                 id="collapsible-nav-dropdown"
                 alignRight
               >
-                <NavDropdown.Item>Log In</NavDropdown.Item>
+                {isLoggedIn ?
+                  (
+                    <>
+                      <NavDropdown.Item as={Link} to="/profile">
+                        My Profile
+                      </NavDropdown.Item>
+                      <NavDropdown.Item as={Link} to="/logout">
+                        Log Out
+                      </NavDropdown.Item>
+                    </>
+                  )
+                  :
+                  (
+                    <NavDropdown.Item as={Link} to="/login">
+                      Log In
+                    </NavDropdown.Item>
+                  )}
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
@@ -90,6 +109,7 @@ class Header extends React.Component {
 
 Header.propTypes = {
   history: PropTypes.instanceOf(Object).isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
 };
 
 export default withRouter(Header);
