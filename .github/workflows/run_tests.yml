@@ -39,6 +39,12 @@ jobs:
         TEST_DB_USERNAME: ${{ secrets.TEST_DB_USERNAME }}
         TEST_SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
         TOKEN_SECRET: ${{ secrets.TOKEN_SECRET }}
+        SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        DB_HOSTNAME: ${{ secrets.DB_HOSTNAME }}
+        DB_NAME: ${{ secrets.DB_NAME }}
+        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        DB_USERNAME: ${{ secrets.DB_USERNAME }}
   test_frontend:
     runs-on: [ubuntu-latest]
     strategy:
