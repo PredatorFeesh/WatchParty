@@ -27,5 +27,12 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'cascade',
     });
   };
+  Movie.prototype.getUser = function () { // eslint-disable-line func-names
+    return this.userid;
+  };
+  Movie.prototype.getSublistBelongsTo = function () { // eslint-disable-line func-names
+    const Sublist = sequelize.import('sublist');
+    return Sublist.findAll({ attributes: ['name'], where: { movie: this.id } });
+  };
   return Movie;
 };
