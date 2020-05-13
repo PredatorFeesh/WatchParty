@@ -37,7 +37,7 @@ jobs:
         TEST_DB_NAME: ${{ secrets.TEST_DB_NAME }}
         TEST_DB_PASSWORD: ${{ secrets.TEST_DB_PASSWORD }}
         TEST_DB_USERNAME: ${{ secrets.TEST_DB_USERNAME }}
-        SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
+        TEST_SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
         TOKEN_SECRET: ${{ secrets.TOKEN_SECRET }}
   test_frontend:
     runs-on: [ubuntu-latest]
