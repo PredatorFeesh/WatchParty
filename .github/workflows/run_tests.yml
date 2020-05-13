@@ -69,7 +69,7 @@ jobs:
       env:
         CI: true
     - name: Get Code Coverage
-    run: npm run test:coverage
+      run: npm run test:coverage
   lint_frontend:
     runs-on: [ubuntu-latest]
     strategy:
