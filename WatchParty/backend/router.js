@@ -115,4 +115,65 @@ router.post('/logout', (req, res) => {
   return res.status(500).send({ message: 'Unable to logout' });
 });
 
+// GET /api/to-watch
+router.get('/to-watch/:userID', function(req, res, next) {
+  models.User.getMoviesByWatchState('to-watch',req.params.userID)
+  .then(data=>res.json(data))
+  .catch(err=>{
+		console.log(err);
+		res.sendStatus(500);
+	})
+})
+
+// GET /api/watched
+router.get('/watched/:userID', function(req, res, next) {
+  models.User.getMoviesByWatchState('watched',req.params.userID)
+  .then(data=>res.json(data))
+  .catch(err=>{
+		console.log(err);
+		res.sendStatus(500);
+	})
+})
+
+// GET /api/not-interested
+router.get('/not-interested/:userID', function(req, res, next) {
+  models.User.getMoviesByWatchState('not-interested',req.params.userID)
+  .then(data=>res.json(data))
+  .catch(err=>{
+		console.log(err);
+		res.sendStatus(500);
+	})
+})
+
+// POST /api/addMovie
+router.post('/addMovie', function(req, res, next) {
+	// Collect parameters
+	const params = { 
+		userid: req.body.userid,
+		tmdbid: req.body.tmdbid,
+		watchstate: req.body.watchstate,
+	}
+	models.User.findOne({where: { id: params.userid }})
+    .then(data=> data.addMovie( params.tmdbid, params.watchstate))    
+	.catch(err=>{
+		console.log(err);
+		res.sendStatus(500);
+	})
+})
+
+// POST /api/deleteMovie
+router.post('/deleteMovie', function(req, res, next) {
+	// Collect parameters
+	const params = { 
+		userid: req.body.userid,
+		tmdbid: req.body.tmdbid,
+	}
+	models.Movie.destroy({where: { userid: params.userid, tmdbid: params.tmdbid }})
+    .then(data=>res.json(data))
+    .catch(err=>{
+		console.log(err);
+		res.sendStatus(500);
+	})
+})
+
 module.exports = router;

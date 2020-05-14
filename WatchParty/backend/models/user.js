@@ -78,7 +78,7 @@ module.exports = (sequelize, DataTypes) => {
 	return Movie.destroy({
       where: {
         userid: this.id,
-        id: movieid,
+        tmdbid: movieid,
 	  }
 	});
   };
