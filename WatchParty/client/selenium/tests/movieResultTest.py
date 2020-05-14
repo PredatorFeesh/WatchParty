@@ -15,20 +15,20 @@ class ResolutionTest(unittest.TestCase):
 
     #This test is to check whether the nav bar works on 500px and below
     def test_sandwich_bar(self):
-        self.driver.get("http://localhost:3000/")
+        self.driver.get("https://watch-party-test-web-client.herokuapp.com/")
         self.driver.find_element_by_xpath('//span[@class = "navbar-toggler-icon"]').click()
 
 
     #This test is to check whether the user can type something in the search bar
     def test_search_bar(self):
-        self.driver.get("http://localhost:3000/")
+        self.driver.get("https://watch-party-test-web-client.herokuapp.com/")
         self.driver.find_element_by_xpath('//span[@class = "navbar-toggler-icon"]').click()
         self.driver.find_element_by_xpath('//input[@data-testid = "search-field"]').send_keys("Batman")
 
 
     #This test is to make sure a user can search for a movie on a 500px or below width resolution
     def test_search(self):
-        self.driver.get("http://localhost:3000/")
+        self.driver.get("https://watch-party-test-web-client.herokuapp.com/")
         self.driver.find_element_by_xpath('//span[@class = "navbar-toggler-icon"]').click()
         self.driver.find_element_by_xpath('//input[@data-testid = "search-field"]').send_keys("Batman")
         self.driver.implicitly_wait(10)
@@ -38,7 +38,7 @@ class ResolutionTest(unittest.TestCase):
 
     #This test is to make sure a user click on a movie title and learn more
     def test_movie_link(self):
-        self.driver.get("http://localhost:3000/")
+        self.driver.get("https://watch-party-test-web-client.herokuapp.com/")
         self.driver.find_element_by_xpath('//span[@class = "navbar-toggler-icon"]').click()
         self.driver.find_element_by_xpath('//input[@data-testid = "search-field"]').send_keys("Batman")
         self.driver.find_element_by_xpath('//button[@class = "btn btn-outline-info"]').click()
