@@ -46,6 +46,6 @@ describe("functions get called", () => {
     const event = Object.assign(jest.fn(), { preventDefault: () => {} });
     container.find({ 'data-testid': 'search-field' }).at(0).simulate('keyup', { ...event, target: { value: 'some movie search' } });
     container.instance().handleSearchSubmit(event);
-    expect(handleSearchSubmitSpy).toHaveBeenCalled();  });
+    expect(handleSearchSubmitSpy).toHaveBeenCalled();
+  });
 });
-
