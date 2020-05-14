@@ -22,12 +22,26 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Run server tests
+      - name: Run install on backend and test
         run: |
+          cd WatchParty/backend/
           npm install
-          npm run test
+          npm run testunit
         env:
           CI: true
+          NODE_ENV: test
+          TEST_DB_HOSTNAME: ${{ secrets.TEST_DB_HOSTNAME }}
+          TEST_DB_NAME: ${{ secrets.TEST_DB_NAME }}
+          TEST_DB_PASSWORD: ${{ secrets.TEST_DB_PASSWORD }}
+          TEST_DB_USERNAME: ${{ secrets.TEST_DB_USERNAME }}
+          TEST_SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
+          TOKEN_SECRET: ${{ secrets.TOKEN_SECRET }}
+          SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DB_HOSTNAME: ${{ secrets.DB_HOSTNAME }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_USERNAME: ${{ secrets.DB_USERNAME }}
       - name: Deploy to Heroku
         env:
           HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
