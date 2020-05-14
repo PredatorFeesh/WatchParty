@@ -6,3 +6,7 @@ This project was bootstrapped with [express-generator](https://www.npmjs.com/pac
 
 * npm run start - start development server
 * npm run build - start production server
+* npm run lint - print lint issues
+* npm run test - run all tests
+* npm run testunit - run unit tests
+* npm run testintegration - run integration tests
