@@ -27,11 +27,6 @@ class Header extends React.Component {
     this.handleSearchKeyUp = this.handleSearchKeyUp.bind(this);
   }
 
-  handleRoute = (route) => () => {
-    const { history } = this.props;
-    history.push({ pathname: route });
-  };
-
   handleTextChange(event) {
     this.setState({ searchText: event.target.value });
   }
