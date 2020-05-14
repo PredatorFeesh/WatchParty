@@ -58,8 +58,8 @@ class MoviePage extends React.Component {
             data-testid="poster-img"
             onError={(event) => { event.target.src = "/default.png"; }}
             src={`https://image.tmdb.org/t/p/w1280${movieItem.poster_path}`}
-            width="260px"
-            height="380px"
+            width="260"
+            height="380"
             alt="movie poster"
           />
         </div>

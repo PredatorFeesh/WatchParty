@@ -135,8 +135,8 @@ class Profile extends React.Component {
                 <div className="profilepic-container">
                   <img
                     src="/userDefault.png"
-                    width="380px"
-                    height="380px"
+                    width="380"
+                    height="380"
                     alt="user profile"
                   />
                 </div>
@@ -205,8 +205,8 @@ class Profile extends React.Component {
                                         className="list-movie-item-img"
                                         onError={(event) => { event.target.src = "/default.png"; }} // eslint-disable-line no-param-reassign
                                         src={`https://image.tmdb.org/t/p/w1280${el.poster_path}`}
-                                        width="50px"
-                                        height="80px"
+                                        width="50"
+                                        height="80"
                                         alt="movie poster"
                                       />
                                       <div className="to-watch-title">
@@ -239,8 +239,8 @@ class Profile extends React.Component {
                                         className="list-movie-item-img"
                                         onError={(event) => { event.target.src = "/default.png"; }} // eslint-disable-line no-param-reassign
                                         src={`https://image.tmdb.org/t/p/w1280${el.poster_path}`}
-                                        width="50px"
-                                        height="80px"
+                                        width="50"
+                                        height="80"
                                         alt="movie poster"
                                       />
                                       <div className="to-watch-title">
@@ -273,8 +273,8 @@ class Profile extends React.Component {
                                         className="user-profile-img"
                                         onError={(event) => { event.target.src = "/default.png"; }} // eslint-disable-line no-param-reassign
                                         src="/userDefault.png"
-                                        width="80px"
-                                        height="80px"
+                                        width="80"
+                                        height="80"
                                         alt="user profile"
                                       />
                                       {user}
@@ -298,8 +298,8 @@ class Profile extends React.Component {
                                         className="user-profile-img"
                                         onError={(event) => { event.target.src = "/default.png"; }} // eslint-disable-line no-param-reassign
                                         src="/userDefault.png"
-                                        width="80px"
-                                        height="80px"
+                                        width="80"
+                                        height="80"
                                         alt="user profile"
                                       />
                                       {user}
