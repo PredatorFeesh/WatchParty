@@ -54,8 +54,9 @@ class MoviePage extends React.Component {
       <div className="info-container">
         <div className="poster-container">
           <img
+            className="posters"
             data-testid="poster-img"
-            onError={(event) => { event.target.src = "/default.png"; }} // eslint-disable-line no-param-reassign
+            onError={this.defaultPoster}
             src={`https://image.tmdb.org/t/p/w1280${movieItem.poster_path}`}
             width="260px"
             height="380px"

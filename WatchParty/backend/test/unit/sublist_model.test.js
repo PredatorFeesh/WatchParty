@@ -10,7 +10,7 @@ const {
   checkPropertyExists,
 } = require('sequelize-test-helpers');
 
-const SublistModel = require('../models/sublist');
+const SublistModel = require('../../models/sublist');
 
 describe('models/sublist', () => {
   const Sublist = SublistModel(sequelize, dataTypes);
@@ -18,7 +18,7 @@ describe('models/sublist', () => {
 
   checkModelName(Sublist)('Sublist');
   context('properties', () => {
-    ['name', 'movie'].forEach(
+    ['name', 'movieID'].forEach(
       checkPropertyExists(sublist),
     );
   });

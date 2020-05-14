@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
   };
   Movie.prototype.getSublistBelongsTo = function () { // eslint-disable-line func-names
     const Sublist = sequelize.import('sublist');
-    return Sublist.findAll({ attributes: ['name'], where: { movie: this.id } });
+    return Sublist.findAll({ attributes: ['name'], where: { movieID: this.id } });
   };
   return Movie;
 };
