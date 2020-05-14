@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { BrowserRouter as Router } from "react-router-dom";
+import renderer from 'react-test-renderer';
 
 import Register from '../Register';
 
