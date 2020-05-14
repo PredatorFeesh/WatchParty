@@ -85,8 +85,8 @@ class SearchResults extends Component {
                                     <img
                                       onError={(event) => { event.target.src = "/default.png"; }} // eslint-disable-line no-param-reassign
                                       src={`https://image.tmdb.org/t/p/w1280${el.poster_path}`}
-                                      width="110px"
-                                      height="190px"
+                                      width="110"
+                                      height="190"
                                       alt="movie poster"
                                     />
                                   </div>
