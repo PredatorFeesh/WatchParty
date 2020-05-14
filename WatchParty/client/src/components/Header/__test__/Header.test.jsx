@@ -32,10 +32,19 @@ describe("functions get called", () => {
     history={{ push: jest.fn() }}
     isLoggedIn={false}
   />);
-  const handleSearchSubmitSpy = jest.spyOn(container.instance(), 'handleSearchSubmit');
+
   it("non empty search results in handleSearchSubmit being called", () => {
+    const handleSearchSubmitSpy = jest.spyOn(container.instance(), 'handleSearchSubmit');
     container.find({ 'data-testid': 'search-field' }).at(0).simulate('change', { target: { value: 'some movie search' } });
     const event = Object.assign(jest.fn(), { preventDefault: () => {} });
+    container.instance().handleSearchSubmit(event);
+    expect(handleSearchSubmitSpy).toHaveBeenCalled();
+  });
+
+  it("non empty search results in handleSearchKeyUpSpy being called", () => {
+    const handleSearchSubmitSpy = jest.spyOn(container.instance(), 'handleSearchSubmit');
+    const event = Object.assign(jest.fn(), { preventDefault: () => {} });
+    container.find({ 'data-testid': 'search-field' }).at(0).simulate('keyup', { ...event, target: { value: 'some movie search' } });
     container.instance().handleSearchSubmit(event);
     expect(handleSearchSubmitSpy).toHaveBeenCalled();
   });
