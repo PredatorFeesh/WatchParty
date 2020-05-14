@@ -24,7 +24,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Run install on backend and test
         run: |
-          cd WatchParty/backend/
           npm install
           npm run testunit
         env:
