@@ -87,10 +87,8 @@ module.exports = (sequelize, DataTypes) => {
     const row = Movie.findOne({
 	    where: {
 		  userid: this.id,
-		  id: movieid,
+		  tmdbid: movieid,
 		},
-	  });
-	return row.update({ watchstate: state });
 	});
   };
   User.prototype.addMovieToSublist = function (name,movieid) {
