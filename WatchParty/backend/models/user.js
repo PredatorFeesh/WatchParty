@@ -38,5 +38,91 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
   // Custom methods
+  User.prototype.getMoviesByWatchState = function (watchstate) {
+    const Movie = sequelize.import('movie');
+	return Movie.findAll({ attributes: ['tmdbid'], where: { userid: this.id, watchstate: watchstate } });
+  };
+  User.getMoviesByWatchState = function (watchstate,userid) {
+    const Movie = sequelize.import('movie');
+	return Movie.findAll({ attributes: ['tmdbid'], where: { userid: userid, watchstate: watchstate } });
+  };
+  User.prototype.getOverlappedMoviesWith = function (watchstate,userid) {
+    const Movie = sequelize.import('movie');
+	const Moviearray = Movie.findAll({
+	  attributes: ['tmdbid'],
+	  where: {
+		userid: userid,
+		watchstate: watchstate,
+	  },
+	  raw: true,
+	});
+	return Movie.findAll({
+	  attributes: ['tmdbid'],
+	  where: {
+		userid: this.id,
+		watchstate: watchstate,
+		tmdbid: Moviearray,
+	  }
+	});
+  };
+  User.prototype.addMovie = function (tmdbid,watchstate) {
+    const Movie = sequelize.import('movie');
+	return Movie.create({
+	  userid: this.id,
+	  tmdbid: tmdbid,
+	  watchstate: watchstate,
+	});
+  };
+  User.prototype.deleteMovie = function (movieid) {
+    const Movie = sequelize.import('movie');
+	return Movie.destroy({
+      where: {
+        userid: this.id,
+        tmdbid: movieid,
+	  }
+	});
+  };
+  User.prototype.changeMovieWatchState = function (movieid,state) {
+    const Movie = sequelize.import('movie');
+    const row = Movie.findOne({
+	    where: {
+		  userid: this.id,
+		  id: movieid,
+		},
+	  });
+	return row.update({ watchstate: state });
+	});
+  };
+  User.prototype.addMovieToSublist = function (name,movieid) {
+    const Sublist = sequelize.import('sublist');
+	return Sublist.create({
+	  name:name,
+	  userID: this.id,
+	  movieID: movieid,
+	});
+  };
+  User.prototype.deleteSublist = function (name) {
+    const Sublist = sequelize.import('sublist');
+	return Sublist.destroy({
+      where: {
+		name: name,
+		userID: this.id,
+	}
+	});
+  };
+  User.searchForUserWithEmail = function (email) {
+	return User.findOne({
+	  where: {
+	    email: email,
+	  }
+	});
+  };
+  User.searchForUserWithID = function (id) {
+	return User.findOne({
+	  where: {
+	    id: id,
+	  }
+	});
+  };
   return User;
 };
