@@ -29,7 +29,7 @@ jobs:
       run: |
         cd WatchParty/backend/
         npm install
-        npm run test
+        npm run testunit
       env:
         CI: true
         NODE_ENV: test
@@ -48,7 +48,7 @@ jobs:
     - name: Get Code Coverage
       run: |
         cd WatchParty/backend/
-        npm run testunit
+        npm run test:coverage
 
   test_frontend:
     runs-on: [ubuntu-latest]
