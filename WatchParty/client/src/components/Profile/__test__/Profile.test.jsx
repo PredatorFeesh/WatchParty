@@ -29,7 +29,7 @@ describe("backend fetching functions were called", () => {
   const fetchWatchedMovieDataSpy = jest.spyOn(Profile.prototype, "fetchWatchedMovieData");
   const fetchFollowersSpy = jest.spyOn(Profile.prototype, "fetchFollowers");
   const fetchFollowingSpy = jest.spyOn(Profile.prototype, "fetchFollowing");
-  const container = shallow(<Profile userID="some id" />);
+  const container = shallow(<Profile userID="some id" />); // eslint-disable-line no-unused-vars
   it("username gets fetched", () => {
     expect(fetchUserNameSpy).toHaveBeenCalled();
   });
