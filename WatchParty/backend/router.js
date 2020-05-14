@@ -8,6 +8,58 @@ const env = process.env.NODE_ENV || 'development';
 const config = require('./config/config.js')[env];
 const models = require('./models');
 
+
+// GET /api/email
+router.get('/email/:email', function(req, res, next) {
+  models.User.searchForUserWithEmail(req.params.email)
+  .then(data=>res.json(data))
+  .catch(err=>{
+		console.log(err);
+		res.sendStatus(500);
+	})
+})
+
+// GET /api/ID
+router.get('/ID/:userid', function(req, res, next) {
+  models.User.searchForUserWithID(req.params.userid)
+  .then(data=>res.json(data))
+  .catch(err=>{
+		console.log(err);
+		res.sendStatus(500);
+	})
+})
+
+
+// GET /api/to-watch
+router.get('/to-watch/:userID', function(req, res, next) {
+  models.User.getMoviesByWatchState('to-watch',req.params.userID)
+  .then(data=>res.json(data))
+  .catch(err=>{
+		console.log(err);
+		res.sendStatus(500);
+	})
+})
+
+// GET /api/watched
+router.get('/watched/:userID', function(req, res, next) {
+  models.User.getMoviesByWatchState('watched',req.params.userID)
+  .then(data=>res.json(data))
+  .catch(err=>{
+		console.log(err);
+		res.sendStatus(500);
+	})
+})
+
+// GET /api/not-interested
+router.get('/not-interested/:userID', function(req, res, next) {
+  models.User.getMoviesByWatchState('not-interested',req.params.userID)
+  .then(data=>res.json(data))
+  .catch(err=>{
+		console.log(err);
+		res.sendStatus(500);
+	})
+})
+
 // GET /api/userDetails
 router.get('/userDetails/:userID', (req, res) => {
   models.User
@@ -23,6 +75,26 @@ router.get('/userDetails/:userID', (req, res) => {
       message: `Unable to get user ${req.params.userID}`,
     }));
 });
+
+// POST /api/postemail
+router.post('/postemail', function(req, res, next) {
+  models.User.searchForUserWithEmail(req.body.email)
+  .then(data=>res.json(data))
+  .catch(err=>{
+		console.log(err);
+		res.sendStatus(500);
+	})
+})
+
+// POST /api/postID
+router.post('/postID', function(req, res, next) {
+  models.User.searchForUserWithID(req.body.userid)
+  .then(data=>res.json(data))
+  .catch(err=>{
+		console.log(err);
+		res.sendStatus(500);
+	})
+})
 
 // POST /api/createUser
 router.post('/createUser', (req, res) => {
@@ -117,67 +189,16 @@ router.post('/logout', (req, res) => {
   return res.status(500).send({ message: 'Unable to logout' });
 });
 
-// GET /api/email
-router.get('/email/:email', function(req, res, next) {
-  models.User.searchForUserWithEmail(req.params.email)
-  .then(data=>res.json(data))
-  .catch(err=>{
-		console.log(err);
-		res.sendStatus(500);
-	})
-})
-
-// GET /api/ID
-router.get('/ID/:userid', function(req, res, next) {
-  models.User.searchForUserWithEmail(req.params.userid)
-  .then(data=>res.json(data))
-  .catch(err=>{
-		console.log(err);
-		res.sendStatus(500);
-	})
-})
-
-
-// GET /api/to-watch
-router.get('/to-watch/:userID', function(req, res, next) {
-  models.User.getMoviesByWatchState('to-watch',req.params.userID)
-  .then(data=>res.json(data))
-  .catch(err=>{
-		console.log(err);
-		res.sendStatus(500);
-	})
-})
-
-// GET /api/watched
-router.get('/watched/:userID', function(req, res, next) {
-  models.User.getMoviesByWatchState('watched',req.params.userID)
-  .then(data=>res.json(data))
-  .catch(err=>{
-		console.log(err);
-		res.sendStatus(500);
-	})
-})
-
-// GET /api/not-interested
-router.get('/not-interested/:userID', function(req, res, next) {
-  models.User.getMoviesByWatchState('not-interested',req.params.userID)
-  .then(data=>res.json(data))
-  .catch(err=>{
-		console.log(err);
-		res.sendStatus(500);
-	})
-})
-
 // POST /api/addMovie
 router.post('/addMovie', function(req, res, next) {
 	// Collect parameters
 	const params = { 
-		userid: req.body.userid,
+		email: req.body.email,
 		tmdbid: req.body.tmdbid,
 		watchstate: req.body.watchstate,
 	}
 	console.log(params)
-	models.User.findOne({where: { id: params.userid }})
+	models.User.findOne({where: { email: params.email }})
     .then(data=> data.addMovie( params.tmdbid, params.watchstate))    
 	.catch(err=>{
 		console.log(err);
@@ -189,10 +210,11 @@ router.post('/addMovie', function(req, res, next) {
 router.post('/deleteMovie', function(req, res, next) {
 	// Collect parameters
 	const params = { 
-		userid: req.body.userid,
+		email: req.body.email,
 		tmdbid: req.body.tmdbid,
 	}
-	models.Movie.destroy({where: { userid: params.userid, tmdbid: params.tmdbid }})
+	const id = models.User.findOne({attributes:['id'],where:{email:params.email}})
+	models.Movie.destroy({where: { userid: id, tmdbid: params.tmdbid }})
     .then(data=>res.json(data))
     .catch(err=>{
 		console.log(err);
@@ -204,11 +226,11 @@ router.post('/deleteMovie', function(req, res, next) {
 router.post('/changeMovieWatchState', function(req, res, next) {
 	// Collect parameters
 	const params = { 
-		userid: req.body.userid,
+		email: req.body.email,
 		tmdbid: req.body.tmdbid,
 		watchstate: req.body.watchstate,
 	}
-	models.User.findOne({where: { id: params.userid }})
+	models.User.findOne({where: { email: params.email }})
     .then(data=> data.changeMovieWatchState( params.tmdbid, params.watchstate))    
 	.catch(err=>{
 		console.log(err);
@@ -220,11 +242,11 @@ router.post('/changeMovieWatchState', function(req, res, next) {
 router.post('/addMovieToSublist', function(req, res, next) {
 	// Collect parameters
 	const params = { 
-		userid: req.body.userid,
+		email: req.body.email,
 		name:req.body.name,
 		movieid: req.body.movieid,
 	}
-	models.User.findOne({where: { id: params.userid }})
+	models.User.findOne({where: { email: params.email }})
     .then(data=> data.addMovieToSublist( params.name,params.movieid))    
 	.catch(err=>{
 		console.log(err);
@@ -236,10 +258,10 @@ router.post('/addMovieToSublist', function(req, res, next) {
 router.post('/deleteSublist', function(req, res, next) {
 	// Collect parameters
 	const params = { 
-		userid: req.body.userid,
+		email: req.body.email,
 		name:req.body.name,
 	}
-	models.User.findOne({where: { id: params.userid }})
+	models.User.findOne({where: { email: params.email }})
     .then(data=> data.deleteSublist( params.name))    
 	.catch(err=>{
 		console.log(err);

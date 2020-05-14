@@ -108,13 +108,15 @@ module.exports = (sequelize, DataTypes) => {
 	  where: {
 	    email: email,
 	  }
+	  ,raw:true,
 	});
   };
   User.searchForUserWithID = function (id) {
 	return User.findOne({
 	  where: {
 	    id: id,
-	  }
+	  },
+	  raw:true,
 	});
   };
   return User;
