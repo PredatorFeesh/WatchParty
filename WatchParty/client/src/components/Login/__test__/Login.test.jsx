@@ -14,6 +14,10 @@ describe("fields/buttons get rendered", () => {
   it("login button renders", () => {
     expect(container.find({ 'data-testid': 'login-btn' }).length).toEqual(1);
   });
+  it("matches the snapshot", () => {
+    const tree = renderer.create(<Login />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
 
 describe("entering info into field updates state", () => {

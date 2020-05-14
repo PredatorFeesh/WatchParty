@@ -10,6 +10,10 @@ describe("button renders", () => {
   it("logout button", () => {
     expect(container.find({ type: 'button' }).text()).toEqual("Log Out");
   });
+  it("matches the snapshot", () => {
+    const tree = renderer.create(<Logout />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
 
 describe("function call test via button click", () => {

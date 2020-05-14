@@ -24,6 +24,10 @@ describe("fields/buttons get rendered", () => {
   it("register button", () => {
     expect(container.find({ type: 'submit' }).text()).toEqual("Register");
   });
+  it("matches the snapshot", () => {
+    const tree = renderer.create(<Register />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
 
 describe("entering info into field updates state", () => {

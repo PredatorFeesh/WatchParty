@@ -16,6 +16,10 @@ describe("search field and search button rendered properly", () => {
     container.find({ 'data-testid': 'search-field' }).at(1).simulate('change', { target: { value: 'some movie search' } });
     expect(container.find({ 'data-testid': 'search-field' }).at(1).props().value).toEqual('some movie search');
   });
+  it("matches the snapshot", () => {
+    const tree = renderer.create(<Header />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
 
 describe("functions get called", () => {
