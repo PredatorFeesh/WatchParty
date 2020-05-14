@@ -176,4 +176,20 @@ router.post('/deleteMovie', function(req, res, next) {
 	})
 })
 
+// POST /api/changeMovieWatchState
+router.post('/changeMovieWatchState', function(req, res, next) {
+	// Collect parameters
+	const params = { 
+		userid: req.body.userid,
+		tmdbid: req.body.tmdbid,
+		watchstate: req.body.watchstate,
+	}
+	models.User.findOne({where: { id: params.userid }})
+    .then(data=> data.addMovie( params.tmdbid, params.watchstate))    
+	.catch(err=>{
+		console.log(err);
+		res.sendStatus(500);
+	})
+})
+
 module.exports = router;
