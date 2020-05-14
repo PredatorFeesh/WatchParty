@@ -48,7 +48,7 @@ jobs:
     - name: Get Code Coverage
       run: |
         cd WatchParty/backend/
-        npm run test:coverage
+        npm run testunit
 
   test_frontend:
     runs-on: [ubuntu-latest]
