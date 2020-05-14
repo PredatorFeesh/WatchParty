@@ -20,7 +20,7 @@ jobs:
       run: |
         cd WatchParty/backend/
         npm install
-        npm run test
+        npm run testunit
       env:
         CI: true
         NODE_ENV: test
