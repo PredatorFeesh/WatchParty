@@ -13,6 +13,7 @@
     "test:coverage": "nyc mocha test/unit/*",
     "testunit": "mocha test/unit/*",
     "testintegration": "mocha test/integration/*",
+    "testheartbeat": "mocha test/heartbeat/*",
     "test:watch": "mocha --watch",
     "test:watch:min": "mocha --watch --reporter min"
   },
