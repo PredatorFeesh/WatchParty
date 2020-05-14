@@ -29,7 +29,7 @@ jobs:
       run: |
         cd WatchParty/backend/
         npm install
-        npm run test
+        npm run testunit
       env:
         CI: true
         NODE_ENV: test
@@ -45,6 +45,11 @@ jobs:
         DB_NAME: ${{ secrets.DB_NAME }}
         DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
         DB_USERNAME: ${{ secrets.DB_USERNAME }}
+    - name: Get Code Coverage
+      run: |
+        cd WatchParty/backend/
+        npm run test:coverage
+
   test_frontend:
     runs-on: [ubuntu-latest]
     strategy:
@@ -65,6 +70,10 @@ jobs:
         npm run test
       env:
         CI: true
+    - name: Get Code Coverage
+      run: |
+        cd WatchParty/client/
+        npm run test:coverage
   lint_frontend:
     runs-on: [ubuntu-latest]
     strategy:
