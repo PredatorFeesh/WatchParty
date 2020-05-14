@@ -38,6 +38,7 @@ router.post('/createUser', (req, res) => {
   models.User
     .create(params)
     .then(async (user) => {
+	  await console.log(user.id)
       // Update password with hash
       /* eslint-disable no-param-reassign */
       user.password = await bcrypt.hash(user.password, config.salt_rounds);
@@ -45,6 +46,7 @@ router.post('/createUser', (req, res) => {
       user.save();
       res.status(200).json({ message: 'Success', details: `Created user with email: ${user.email}` });
     }).catch((err) => {
+	  console.log(err)
       if (err instanceof UniqueConstraintError) {
         return res.status(412).send({ message: 'An account already exists with that email' });
       } if (err instanceof ValidationError) {
@@ -115,6 +117,27 @@ router.post('/logout', (req, res) => {
   return res.status(500).send({ message: 'Unable to logout' });
 });
 
+// GET /api/email
+router.get('/email/:email', function(req, res, next) {
+  models.User.searchForUserWithEmail(req.params.email)
+  .then(data=>res.json(data))
+  .catch(err=>{
+		console.log(err);
+		res.sendStatus(500);
+	})
+})
+
+// GET /api/ID
+router.get('/ID/:userid', function(req, res, next) {
+  models.User.searchForUserWithEmail(req.params.userid)
+  .then(data=>res.json(data))
+  .catch(err=>{
+		console.log(err);
+		res.sendStatus(500);
+	})
+})
+
+
 // GET /api/to-watch
 router.get('/to-watch/:userID', function(req, res, next) {
   models.User.getMoviesByWatchState('to-watch',req.params.userID)
@@ -153,6 +176,7 @@ router.post('/addMovie', function(req, res, next) {
 		tmdbid: req.body.tmdbid,
 		watchstate: req.body.watchstate,
 	}
+	console.log(params)
 	models.User.findOne({where: { id: params.userid }})
     .then(data=> data.addMovie( params.tmdbid, params.watchstate))    
 	.catch(err=>{
@@ -185,11 +209,41 @@ router.post('/changeMovieWatchState', function(req, res, next) {
 		watchstate: req.body.watchstate,
 	}
 	models.User.findOne({where: { id: params.userid }})
-    .then(data=> data.addMovie( params.tmdbid, params.watchstate))    
+    .then(data=> data.changeMovieWatchState( params.tmdbid, params.watchstate))    
 	.catch(err=>{
 		console.log(err);
 		res.sendStatus(500);
 	})
 })
 
+// POST /api/addMovieToSublist
+router.post('/addMovieToSublist', function(req, res, next) {
+	// Collect parameters
+	const params = { 
+		userid: req.body.userid,
+		name:req.body.name,
+		movieid: req.body.movieid,
+	}
+	models.User.findOne({where: { id: params.userid }})
+    .then(data=> data.addMovieToSublist( params.name,params.movieid))    
+	.catch(err=>{
+		console.log(err);
+		res.sendStatus(500);
+	})
+})
+
+// POST /api/deleteSublist
+router.post('/deleteSublist', function(req, res, next) {
+	// Collect parameters
+	const params = { 
+		userid: req.body.userid,
+		name:req.body.name,
+	}
+	models.User.findOne({where: { id: params.userid }})
+    .then(data=> data.deleteSublist( params.name))    
+	.catch(err=>{
+		console.log(err);
+		res.sendStatus(500);
+	})
+})
 module.exports = router;

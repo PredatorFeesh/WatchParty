@@ -40,11 +40,11 @@ module.exports = (sequelize, DataTypes) => {
   // Custom methods
   User.prototype.getMoviesByWatchState = function (watchstate) {
     const Movie = sequelize.import('movie');
-	return Movie.findAll({ attributes: ['tmdbid'], where: { userid: this.id, watchstate: watchstate } });
+	return Movie.findAll({ attributes: ['id','tmdbid'], where: { userid: this.id, watchstate: watchstate } });
   };
   User.getMoviesByWatchState = function (watchstate,userid) {
     const Movie = sequelize.import('movie');
-	return Movie.findAll({ attributes: ['tmdbid'], where: { userid: userid, watchstate: watchstate } });
+	return Movie.findAll({ attributes: ['id','tmdbid'], where: { userid: userid, watchstate: watchstate } });
   };
   User.prototype.getOverlappedMoviesWith = function (watchstate,userid) {
     const Movie = sequelize.import('movie');
@@ -84,12 +84,7 @@ module.exports = (sequelize, DataTypes) => {
   };
   User.prototype.changeMovieWatchState = function (movieid,state) {
     const Movie = sequelize.import('movie');
-    const row = Movie.findOne({
-	    where: {
-		  userid: this.id,
-		  tmdbid: movieid,
-		},
-	});
+	Movie.update({watchstate:state},{where: {userid: this.id,tmdbid: movieid}});
   };
   User.prototype.addMovieToSublist = function (name,movieid) {
     const Sublist = sequelize.import('sublist');
